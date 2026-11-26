@@ -3,7 +3,9 @@ UNDANGAN PERNIKAHAN DIGITAL - AYU & ARYA (Luxury Editorial Motion)
 Cara pakai: buka index.html di browser. Folder assets/ harus ikut (berisi GSAP & ScrollTrigger lokal).
 Butuh internet hanya untuk Google Fonts & peta Google Maps.
 
-Redesain bagian tengah (Acara & Lokasi dirombak: medali tanggal, kartu acara, peta berbingkai + kartu info) (setelah hero, sebelum footer): Pembuka, Mempelai, Kisah Kami, Acara, Lokasi,
+Amplop: ketuk Buka Undangan -> segel pecah (percikan emas), tutup terbuka, kartu naik, nama muncul, kartu mendekat lalu layar menyingkap hero.
+Galeri: placeholder bergaris tematik (Ampera, Limas, cincin, songket, Musi) dengan bingkai tipis; hover menampilkan tombol +.
+Redesain bagian tengah (Acara: medali tanggal berbezel, hitung mundur bergaris, panel acara bernomor + siluet Ampera; Lokasi: peta berbingkai + kartu info, peta berbingkai + kartu info) (setelah hero, sebelum footer): Pembuka, Mempelai, Kisah Kami, Acara, Lokasi,
 Galeri, RSVP & Ucapan. Hero, amplop pembuka, dan footer tidak diubah.
 Arah: editorial mewah. Tipografi besar, garis halus sebagai pemisah, tanpa bayangan/bingkai/gradasi,
 satu motif songket (pita di atas bagian Acara) dan satu garis Jembatan Ampera (placeholder foto Kisah Kami).

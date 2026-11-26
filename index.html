@@ -78,6 +78,10 @@ main:focus{outline:none}
 .fl-b{transform:rotateX(180deg)}
 .fl-f svg,.fl-b svg{display:block;width:100%;height:100%}
 .seal{position:absolute;left:50%;top:100%;display:grid;place-items:center;width:clamp(34px,10vw,42px);aspect-ratio:1;border-radius:50%;transform:translate(-50%,-64%);background:radial-gradient(circle at 35% 30%,#7A3A48,var(--wine) 60%,#3F1F27);box-shadow:0 3px 8px rgba(40,10,20,.4),inset 0 0 0 3px rgba(216,190,154,.35);color:var(--gold-l);font:italic 400 clamp(11px,3vw,14px) var(--serif);letter-spacing:.02em}
+.env-wrap{cursor:pointer}
+.env-glow{position:absolute;z-index:1;left:-14%;right:-14%;top:-34%;bottom:6%;background:radial-gradient(closest-side at 50% 50%,rgba(222,178,120,.6),rgba(222,178,120,0));opacity:0;pointer-events:none}
+.seal::after{content:"";position:absolute;inset:-7px;border:1px solid var(--gold);border-radius:50%;opacity:0;animation:ping 2.6s ease-out 1.8s infinite}
+.sp{position:absolute;z-index:6;left:50%;top:54.4%;width:5px;height:5px;margin:-2.5px;border-radius:50%;background:var(--gold);pointer-events:none}
 .cv-b{margin-top:2px;gap:14px;padding:10px 10px 10px 26px}
 .cv-b i{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--ivory);color:var(--wine);transition:transform .3s}
 .cv-b:hover i{transform:translateX(3px)}
@@ -93,7 +97,7 @@ html:not(.gs) .env-card{transform:translateY(-74%)}
 .ly svg{display:block;width:max(100%,900px);height:auto;margin-left:min(0px,calc((100% - 900px)/2))}
 .l-sky{inset:-30% 0 0 0;background:linear-gradient(#35192A 0%,#5E3140 24%,#8E5160 46%,#C08572 68%,#E3BE98 86%,#F0D9B8 100%)}
 .sun{position:absolute;left:50%;bottom:31%;width:min(64vw,440px);aspect-ratio:1;translate:-50% 0;border-radius:50%;background:radial-gradient(circle,rgba(255,240,208,.95) 0 13%,rgba(247,214,160,.5) 30%,rgba(247,214,160,0) 66%)}
-.l-city{bottom:calc(var(--w)*.15)}.l-river{bottom:0}
+.l-city{bottom:calc(var(--w)*.15)}.l-river{bottom:calc(var(--w)*-.0233)} /* permukaan air tepat di dasar pilar jembatan */
 .shade{position:absolute;inset:0;z-index:3;background:linear-gradient(rgba(36,16,24,.55) 0%,rgba(36,16,24,.22) 36%,transparent 58%)}
 .fade{position:absolute;left:0;right:0;bottom:0;height:96px;z-index:4;background:linear-gradient(transparent,var(--ivory))}
 .hero-txt{position:absolute;z-index:5;left:0;right:0;top:max(7svh,52px);padding:0 28px;text-align:center;color:var(--ivory)}
@@ -106,7 +110,7 @@ html:not(.gs) .env-card{transform:translateY(-74%)}
 html:not(.gs) body:not(.opened) .hero-txt>*{opacity:0}
 html:not(.gs) .opened .hero-txt>*{animation:rise 1.2s var(--ease) 1.3s both}
 
-@media(min-aspect-ratio:3/2){.l-city{bottom:calc(var(--w)*.15 - 17svh)}.l-river{bottom:-7svh}.sun{bottom:24%}.fade{height:64px}.hero-txt{top:max(5.5svh,40px)}.hero-txt h1{font-size:clamp(60px,min(17vw,13svh),128px)}}
+@media(min-aspect-ratio:3/2){.l-city{bottom:calc(var(--w)*.15 - 10svh)}.l-river{bottom:calc(var(--w)*-.0233 - 10svh)}.fade{height:64px}.hero-txt{top:max(5.5svh,40px)}.hero-txt h1{font-size:clamp(60px,min(17vw,13svh),128px)}}
 /* intro hero: fajar, awan, burung, perahu, lalu nama */
 .dawn{position:absolute;inset:0;z-index:3;background:#26101C;opacity:0;pointer-events:none}
 .fx{position:absolute;left:0;right:0;top:0;height:62%;overflow:hidden;pointer-events:none}
@@ -240,10 +244,14 @@ main .btn.o{border-color:currentColor}
 #acara .sec-h{margin-bottom:clamp(40px,6vw,72px)}
 .ac{display:grid;gap:clamp(36px,6vw,56px);justify-items:center}
 .ac-l{display:grid;gap:clamp(24px,4vw,36px);justify-items:center;width:100%}
-.medal{--md:min(86vw,340px);position:relative;display:grid;place-content:center;justify-items:center;width:var(--md);aspect-ratio:1;text-align:center}
+#acara{overflow:hidden}
+#acara .wrap{position:relative;z-index:1}
+#acara::after{content:"";position:absolute;left:0;right:0;bottom:0;height:200px;opacity:.15;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 200' fill='none' stroke='%23D8BE9A' stroke-width='1.2'%3E%3Cpath d='M0 172H1200M370 172V52h30v120M800 172V52h30v120M358 52h54M788 52h54M0 168Q190 160 385 56Q600 190 815 56Q1010 160 1200 168'/%3E%3C/svg%3E") center bottom/max(1200px,100%) auto no-repeat}
+.medal{--md:min(86vw,340px);position:relative;display:grid;place-content:center;justify-items:center;width:var(--md);aspect-ratio:1;text-align:center;background:radial-gradient(circle,rgba(216,190,154,.16) 0,rgba(216,190,154,.05) 48%,transparent 70%);border-radius:50%}
 .medal::before,.medal::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
-.medal::before{inset:0;border:1px solid rgba(216,190,154,.55)}
-.medal::after{inset:clamp(10px,2.4vw,16px);border:1px dashed rgba(216,190,154,.34);animation:spin 120s linear infinite}
+.medal::before{inset:0;border:1px solid rgba(216,190,154,.6)}
+.medal::after{inset:clamp(26px,7vw,40px);border:1px solid rgba(216,190,154,.22)}
+.mt{position:absolute;inset:clamp(8px,2vw,12px);border-radius:50%;pointer-events:none;background:repeating-conic-gradient(rgba(216,190,154,.7) 0 .5deg,transparent .5deg 3deg);-webkit-mask:radial-gradient(closest-side,transparent calc(100% - 10px),#000 calc(100% - 9px));mask:radial-gradient(closest-side,transparent calc(100% - 10px),#000 calc(100% - 9px));animation:spin 240s linear infinite}
 .medal>i{position:absolute;width:9px;height:9px;background:var(--gold-l);transform:rotate(45deg)}
 .medal>i:nth-child(1){top:-4.5px;left:calc(50% - 4.5px)}.medal>i:nth-child(2){bottom:-4.5px;left:calc(50% - 4.5px)}
 .medal>i:nth-child(3){left:-4.5px;top:calc(50% - 4.5px)}.medal>i:nth-child(4){right:-4.5px;top:calc(50% - 4.5px)}
@@ -253,19 +261,22 @@ main .btn.o{border-color:currentColor}
 .md-n .w{padding:.16em .06em .1em;margin:-.16em -.06em -.1em}
 .md-b{font:italic 400 clamp(22px,5.6vw,28px)/1.2 var(--serif);color:var(--gold-l)}
 @keyframes spin{to{transform:rotate(360deg)}}
-.cd{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,1.6vw,14px);width:100%;max-width:440px}
-.cd div{padding:16px 4px 14px;border:1px solid var(--line-l);background:rgba(247,243,235,.045);text-align:center}
-.cd b{display:block;font:400 clamp(30px,8.6vw,46px)/1 var(--serif);letter-spacing:-.01em;color:var(--ivory);font-variant-numeric:tabular-nums lining-nums}
-.cd span{display:block;margin-top:8px;font:500 10.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--gold-l)}
-.events{display:grid;gap:clamp(16px,2.4vw,24px);width:100%;max-width:560px}
-.evc{position:relative;display:grid;justify-items:center;padding:clamp(34px,5vw,44px) 24px clamp(30px,4vw,38px);border:1px solid rgba(216,190,154,.34);background:rgba(247,243,235,.045);text-align:center}
-.evc::before,.evc::after{content:"";position:absolute;width:18px;height:18px;border:1px solid var(--gold-l);pointer-events:none}
-.evc::before{left:-1px;top:-1px;border-right:0;border-bottom:0}.evc::after{right:-1px;bottom:-1px;border-left:0;border-top:0}
+.cd{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:100%;max-width:440px;padding:16px 0 14px;border-block:1px solid var(--line-l)}
+.cd div{position:relative;text-align:center}
+.cd div+div::before{content:"";position:absolute;left:0;top:10%;bottom:10%;width:1px;background:var(--line-l)}
+.cd b{display:block;font:400 clamp(34px,9.4vw,50px)/1 var(--serif);letter-spacing:-.01em;color:var(--ivory);font-variant-numeric:tabular-nums lining-nums}
+.cd span{display:block;margin-top:8px;font:500 10.5px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-l)}
+.events{counter-reset:ev;display:grid;width:100%;max-width:560px;border:1px solid rgba(216,190,154,.3);background:rgba(247,243,235,.04)}
+.evc{counter-increment:ev;position:relative;display:grid;justify-items:center;padding:clamp(40px,6vw,48px) 24px clamp(34px,5vw,40px);text-align:center;transition:background .5s}
+.evc+.evc{border-top:1px solid rgba(216,190,154,.26)}
+.evc::before{content:"0" counter(ev);position:absolute;top:16px;right:20px;font:italic 400 20px/1 var(--serif);color:rgba(216,190,154,.7)}
+.evc::after{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold-l);transform:scaleY(0);transform-origin:top;transition:transform .7s var(--ease)}
+.evc:hover{background:rgba(247,243,235,.045)}.evc:hover::after{transform:scaleY(1)}
 .evc-ic{display:grid;place-items:center;width:64px;height:64px;margin-bottom:14px;border:1px solid rgba(216,190,154,.5);border-radius:50%;color:var(--gold-l)}
 .evc-ic svg{width:32px;height:32px;display:block}
 .evc-b{display:grid;justify-items:inherit;min-width:0}
-.bg-wine .evc-k{font:italic 400 clamp(32px,8.4vw,44px)/1.05 var(--serif);color:var(--gold-l)}
-.evc-t{margin-top:10px;font:400 clamp(30px,8vw,40px)/1.1 var(--serif);color:var(--ivory)}
+.bg-wine .evc-k{font:italic 400 clamp(34px,8.8vw,46px)/1.05 var(--serif);color:var(--gold-l)}
+.evc-t{margin-top:12px;font:400 clamp(32px,8.6vw,44px)/1.1 var(--serif);color:var(--ivory);font-variant-numeric:lining-nums}
 .evc-t small{display:block;margin-bottom:6px;font:500 10.5px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:rgba(247,243,235,.72)}
 .evc-m{display:grid;gap:2px;width:min(100%,280px);margin-top:18px;padding-top:16px;border-top:1px solid var(--line-l);font-size:15px;line-height:1.55;color:rgba(247,243,235,.8)}
 .evc-m b{font-weight:500;color:var(--ivory)}
@@ -277,7 +288,7 @@ main .btn.o{border-color:currentColor}
  .medal{--md:min(100%,440px)}.md-n{font-size:clamp(150px,15vw,214px)}.md-b{font-size:30px}.md-h{font-size:13px}
  .cd{max-width:440px}
  .events{max-width:none}
- .evc{grid-template-columns:auto minmax(0,1fr);align-items:center;column-gap:clamp(28px,3vw,40px);justify-items:start;padding:44px clamp(32px,3.4vw,48px);text-align:left}
+ .evc{grid-template-columns:auto minmax(0,1fr);align-items:center;column-gap:clamp(28px,3vw,40px);justify-items:start;padding:48px clamp(32px,3.4vw,48px);text-align:left}
  .evc-ic{width:88px;height:88px;margin:0}.evc-ic svg{width:42px;height:42px}
  .evc-b{justify-items:start}.evc-m{width:auto;max-width:300px}
 }
@@ -324,12 +335,17 @@ main .btn.o{border-color:currentColor}
 .gi{display:flex;flex-direction:column;gap:14px;min-width:0;padding:0;border:0;background:none;color:var(--ivory);font:inherit;text-align:left;cursor:zoom-in}
 .gm{display:block;aspect-ratio:var(--ar,4/5);background:var(--wine)}
 .gm>*{transition:transform 1.4s var(--ease)}
-.gc{display:flex;align-items:baseline;gap:14px;font:italic 400 clamp(18px,2vw,21px)/1.2 var(--serif)}
+.gc{display:flex;align-items:center;gap:14px;font:italic 400 clamp(18px,2vw,21px)/1.2 var(--serif)}
+.gc::after{content:"";flex:1;height:1px;background:rgba(216,190,154,.3);transform-origin:left;transition:background .5s,transform .9s var(--ease)}
+.gm::before{content:"+";position:absolute;z-index:2;left:50%;top:50%;display:grid;place-items:center;width:60px;height:60px;margin:-30px 0 0 -30px;border-radius:50%;background:rgba(247,243,235,.94);color:var(--wine);font:300 30px/1 var(--serif);opacity:0;transform:scale(.6);transition:opacity .4s,transform .5s var(--ease);pointer-events:none}
+.gm::after{content:"";position:absolute;z-index:1;inset:clamp(10px,1.4vw,16px);border:1px solid rgba(247,243,235,.55);pointer-events:none;transition:inset .7s var(--ease)}
+.lb-s .pl-i{width:clamp(80px,14vw,150px);height:auto}
+.pl{position:relative}.pl-i{position:absolute;left:50%;top:46%;width:clamp(64px,11vw,128px);height:auto;translate:-50% -50%;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;opacity:.5}
 .gc i{font:500 11px var(--sans);font-style:normal;letter-spacing:.2em;color:var(--gold-l)}
 .gi:nth-child(1){grid-column:1/3;--ar:4/3}.gi:nth-child(2){--ar:4/5}.gi:nth-child(3){--ar:4/5;margin-top:44px}
 .gi:nth-child(4){grid-column:1/3;--ar:16/10}.gi:nth-child(5){--ar:1/1}.gi:nth-child(6){--ar:3/4;margin-top:36px}.gi:nth-child(7){grid-column:1/3;--ar:5/4}
 .gi:focus-visible{outline:2px solid var(--gold-l);outline-offset:6px}
-@media(hover:hover){.gi:hover .gm>*{transform:scale(1.04)}}
+@media(hover:hover){.gi:hover .gm>*{transform:scale(1.04)}.gi:hover .gm::before{opacity:1;transform:none}.gi:hover .gm::after{inset:clamp(16px,2vw,24px)}.gi:hover .gc::after{background:var(--gold-l)}}
 @media(min-width:860px){.jr{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(16px,2.4vw,32px);row-gap:clamp(56px,8vw,112px)}
  .gi:nth-child(1){grid-column:1/8;--ar:4/3}.gi:nth-child(2){grid-column:9/13;--ar:3/4;margin-top:clamp(90px,13vw,200px)}
  .gi:nth-child(3){grid-column:2/6;--ar:4/5;margin-top:0}.gi:nth-child(4){grid-column:7/13;--ar:5/4;margin-top:clamp(40px,7vw,110px)}
@@ -383,6 +399,7 @@ footer.ft{position:relative;overflow:hidden;display:grid;align-content:center;mi
 .ft-a,.ft-n i{display:block;white-space:nowrap;overflow:hidden;padding:.06em .1em .2em;margin:-.06em -.1em -.2em}
 .ft-n i{font-size:.3em;color:var(--gold-l);padding-block:.1em .22em}
 .ft-d{margin-top:clamp(28px,4.4vw,44px);font:500 12px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-l)}
+.btn.o.ft-up{margin-top:clamp(28px,4.4vw,40px);min-height:52px;padding:14px 30px;border-radius:0;gap:12px;font:500 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--ivory);border-color:rgba(247,243,235,.55)}.btn.o.ft-up:hover,.btn.o.ft-up:focus-visible{background:var(--ivory);color:var(--wine);border-color:var(--ivory)}
 .wm{max-width:640px;margin:clamp(48px,8vw,80px) auto 0;padding-top:22px;border-top:1px solid var(--line-l);font:500 12px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:rgba(247,243,235,.72)}
 @media(min-width:900px){.ft-n{flex-direction:row;justify-content:center;align-items:baseline;gap:.14em;font-size:clamp(120px,15vw,210px)}.ft-n i{font-size:.34em}}
 
@@ -412,7 +429,7 @@ body,.bg-champ,#cover,.env-card,.loc-i,.vm{background-size:180px 180px}
     <div class="cv-g"><p class="cv-k">Kepada Yth.</p><p class="cv-name" id="tamu"></p><p class="cv-sub">Kami mengundang Anda ke hari bahagia kami</p></div>
     <div class="env-wrap"><div class="env">
       <div class="env-sh" aria-hidden="true"></div>
-      <div class="env-bk" aria-hidden="true"></div>
+      <div class="env-bk" aria-hidden="true"></div><div class="env-glow" aria-hidden="true"></div>
       <div class="env-card"><div class="card-in"><p class="cd-e">The Wedding of</p><h2 class="cd-n"><span data-k="wanita"></span><i>&amp;</i><span data-k="pria"></span></h2><p class="cd-d" data-k="tglPanjang"></p></div></div>
       <svg class="env-fr" viewBox="0 0 400 272" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="pf1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EFE6D6"/><stop offset="1" stop-color="#E3D7C2"/></linearGradient></defs><path d="M0 0L200 148L400 0V272H0Z" fill="url(#pf1)"/><path d="M0 272L200 148L400 272" fill="none" stroke="#C9B89C" stroke-width="1" opacity=".75"/><path d="M0 0L200 148L400 0" fill="none" stroke="#C9B89C" stroke-width="1" opacity=".8"/></svg>
       <div class="env-flap" aria-hidden="true">
@@ -460,7 +477,7 @@ body,.bg-champ,#cover,.env-card,.loc-i,.vm{background-size:180px 180px}
     <defs><linearGradient id="rv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D9A98A"/><stop offset=".4" stop-color="#8A5565"/><stop offset="1" stop-color="#3A1D27"/></linearGradient></defs>
     <rect width="1200" height="220" fill="url(#rv)"/>
     <g fill="#FFE7BD" id="shim"></g>
-    <g transform="translate(250 60)"><g class="bt"><path d="M0 30h110l-13 15H14z" fill="#2A1219"/><rect x="38" y="8" width="40" height="22" fill="#5E3144"/><path d="M32 8h52l-11-11H43z" fill="#3A1D27"/></g></g>
+    <g transform="translate(250 22)"><g class="bt"><path d="M0 30h110l-13 15H14z" fill="#2A1219"/><rect x="38" y="8" width="40" height="22" fill="#5E3144"/><path d="M32 8h52l-11-11H43z" fill="#3A1D27"/></g></g>
   </svg></div>
   <div class="shade"></div>
   <div class="hero-txt">
@@ -478,7 +495,7 @@ body,.bg-champ,#cover,.env-card,.loc-i,.vm{background-size:180px 180px}
   <div class="wrap open">
     <p class="label rev">Bismillahirrahmanirrahim</p>
     <div class="open-b">
-      <p class="lead rev"><em>Assalamu’alaikum Warahmatullahi Wabarakatuh.</em> Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada hari bahagia kami.</p>
+      <p class="lead rev"><em>Assalamu’alaikum Warahmatullahi Wabarakatuh.</em> Dengan memohon rahmat dan ridho Allah Subhanahu wa Ta’ala, kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada hari bahagia kami.</p>
       <blockquote class="quote rev"><p>“Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.”</p><cite>QS. Ar-Rum: 21</cite></blockquote>
       <a class="link rev" href="#acara">Lihat detail acara</a>
     </div>
@@ -525,7 +542,7 @@ body,.bg-champ,#cover,.env-card,.loc-i,.vm{background-size:180px 180px}
     <header class="sec-h sec-h--c rev"><p class="label">Save the Date</p><h2>Detail Acara</h2></header>
     <div class="ac">
       <div class="ac-l">
-        <div class="medal rev" role="group" aria-label="Tanggal acara"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span class="md-h" data-k="hari"></span><b class="md-n" data-k="tgl"></b><span class="md-b" data-k="blnThn"></span></div>
+        <div class="medal rev" role="group" aria-label="Tanggal acara"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><s class="mt" aria-hidden="true"></s><span class="md-h" data-k="hari"></span><b class="md-n" data-k="tgl"></b><span class="md-b" data-k="blnThn"></span></div>
         <div class="cd rev" id="cd" role="timer" aria-label="Hitung mundur menuju acara"><div><b>0</b><span>Hari</span></div><div><b>0</b><span>Jam</span></div><div><b>0</b><span>Menit</span></div><div><b>0</b><span>Detik</span></div></div>
       </div>
       <div class="events">
@@ -584,6 +601,7 @@ body,.bg-champ,#cover,.env-card,.loc-i,.vm{background-size:180px 180px}
     <p class="ft-h">Terima kasih atas doa &amp; restu Anda.</p>
     <h2 class="ft-n"><span class="ft-a" data-k="wanita"></span><i>&amp;</i><span class="ft-a" data-k="pria"></span></h2>
     <p class="ft-d" data-k="tglPanjang"></p>
+    <a class="btn o ft-up" href="#top"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg><span>Kembali ke atas</span></a>
     <p class="wm">Benang Merah Living Journal</p>
   </div>
 </footer>
@@ -659,26 +677,22 @@ document.getElementById('tamu').textContent=(new URLSearchParams(location.search
 document.getElementById('seal').textContent=(C.wanita[0]||'')+'&'+(C.pria[0]||'');
 const others=[...document.body.children].filter(e=>e!==cv&&e!==veil&&!['SCRIPT','AUDIO'].includes(e.tagName));
 others.forEach(e=>e.inert=true);bk.focus({preventScroll:true});
-let intro=null;
+let intro=null,cn=null,bob=null;
 const heroNames=G?chars(document.querySelector('.hero-txt h1')):null;
 if(G){
- const gn=words(document.getElementById('tamu')),cn=chars(document.querySelector('.cd-n'));
+ const gn=words(document.getElementById('tamu'));cn=chars(document.querySelector('.cd-n'));
  gsap.set('.env-flap',{transformPerspective:900});
  gsap.set(['.cv-name','.cd-n'],{opacity:1});
  if(rm){gsap.set(['.cv-k','.cv-sub','.env-wrap','.cv-b','.cd-e','.cd-d'],{opacity:1});gsap.set('.env-flap',{rotationX:-180,zIndex:1});gsap.set('.env-card',{yPercent:-74})}
  else{
+  gsap.set(cn,{yPercent:118});
   intro=gsap.timeline({defaults:{ease:'power3.out'}});
   intro.fromTo('.cv-k',{opacity:0,y:10},{opacity:1,y:0,duration:.8},.1)
    .fromTo(gn,{yPercent:118},{yPercent:0,duration:1,stagger:.08},.2)
    .fromTo('.cv-sub',{opacity:0,y:8},{opacity:1,y:0,duration:.9},.55)
    .fromTo('.env-wrap',{opacity:0,y:34},{opacity:1,y:0,duration:1.1},.6)
-   .to('.env-flap',{rotationX:-180,duration:.95,ease:'power2.inOut'},1.35)
-   .set('.env-flap',{zIndex:1},1.8)
-   .to('.env-card',{yPercent:-74,duration:1.15,ease:'power3.inOut'},1.85)
-   .fromTo('.cd-e',{opacity:0},{opacity:1,duration:.8},2.5)
-   .fromTo(cn,{yPercent:118},{yPercent:0,duration:1,stagger:.06},2.55)
-   .fromTo('.cd-d',{opacity:0,y:6},{opacity:1,y:0,duration:.8},3)
-   .fromTo('.cv-b',{opacity:0,y:14},{opacity:1,y:0,duration:.9},3.2)}
+   .fromTo('.cv-b',{opacity:0,y:14},{opacity:1,y:0,duration:.9},1.5)
+   .add(()=>{bob=gsap.to('.env',{y:-5,duration:2.2,yoyo:true,repeat:-1,ease:'sine.inOut'})},1.7)}
 }
 /* hero: nama muncul bertahap, dipanggil dari transisi masuk */
 const heroIntro=()=>{const t=gsap.timeline({defaults:{ease:'power3.out'}});
@@ -690,17 +704,38 @@ bk.onclick=()=>{if(opened)return;opened=true;
  if(intro&&intro.progress()<1)intro.progress(1);
  others.forEach(e=>e.inert=false);scrollTo(0,0);
  if(C.musik)bgm.play().then(()=>setMus(true)).catch(()=>{});
- const b=document.body;b.classList.add('opened');cv.classList.add('go');
+ const b=document.body;cv.classList.add('go');
  const done=()=>{cv.remove();veil.remove();b.classList.remove('lock');G&&ScrollTrigger.refresh();document.getElementById('konten').focus({preventScroll:true});dispatchEvent(new Event('scroll'))};
- if(!G||rm){veil.remove();cv.style.transition='opacity .3s';cv.style.opacity=0;if(G)gsap.set(['.hero-eyebrow','.hero-txt .dt',heroNames],{opacity:1});setTimeout(done,rm?150:350);return}
- gsap.set([cv,veil],{clipPath:'inset(0% 0% 0% 0%)'});
+ if(!G||rm){b.classList.add('opened');veil.remove();cv.style.transition='opacity .3s';cv.style.opacity=0;if(G)gsap.set(['.hero-eyebrow','.hero-txt .dt',heroNames],{opacity:1});setTimeout(done,rm?150:350);return}
+ /* 1) segel pecah, 2) tutup amplop terbuka, 3) kartu naik & nama muncul, 4) kartu mendekat, 5) layar menyingkap hero */
+ if(bob)bob.kill();
+ const env=document.querySelector('.env'),sp=[];
+ for(let i=0;i<12;i++){const d=document.createElement('span');d.className='sp';env.append(d);sp.push(d)}
+ const wipe=()=>{b.classList.add('opened');gsap.set([cv,veil],{clipPath:'inset(0% 0% 0% 0%)'});
+  gsap.timeline()
+   .call(done,null,1.7)
+   .to('.cv-in',{opacity:0,y:-10,duration:.45,ease:'power2.in'},0)
+   .to(cv,{clipPath:'inset(100% 0% 0% 0%)',duration:1.3,ease:'expo.inOut'},.25)
+   .to(veil,{clipPath:'inset(100% 0% 0% 0%)',duration:1.3,ease:'expo.inOut'},.42)
+   .fromTo('.hero',{scale:1.1,transformOrigin:'50% 65%'},{scale:1,duration:2.4,ease:'power3.out'},.3)
+   .add(heroIntro(),1.45)};
  gsap.timeline()
-  .call(done,null,1.7)
-  .to('.cv-in',{opacity:0,y:-10,duration:.45,ease:'power2.in'},0)
-  .to(cv,{clipPath:'inset(100% 0% 0% 0%)',duration:1.3,ease:'expo.inOut'},.25)
-  .to(veil,{clipPath:'inset(100% 0% 0% 0%)',duration:1.3,ease:'expo.inOut'},.42)
-  .fromTo('.hero',{scale:1.1,transformOrigin:'50% 65%'},{scale:1,duration:2.4,ease:'power3.out'},.3)
-  .add(heroIntro(),1.45)};
+  .to('.cv-g,.cv-b',{opacity:0,y:-12,duration:.5,ease:'power2.in'},0)
+  .to('.seal',{scale:1.3,rotation:-10,duration:.2,ease:'power2.out'},0)
+  .to('.seal',{scale:.3,opacity:0,y:10,duration:.4,ease:'power2.in'},.2)
+  .to(sp,{x:i=>Math.cos(i/12*6.283+.4)*(46+(i%3)*22),y:i=>Math.sin(i/12*6.283+.4)*(40+(i%4)*14),scale:i=>i%2?.5:1,opacity:0,duration:.9,ease:'power2.out'},.2)
+  .fromTo(sp,{opacity:1},{opacity:1,duration:.01},.2)
+  .to('.env-flap',{rotationX:-180,duration:.95,ease:'power2.inOut'},.42)
+  .set('.env-flap',{zIndex:1},.9)
+  .to('.env-glow',{opacity:1,duration:1,ease:'power2.out'},.95)
+  .to('.env-card',{yPercent:-74,duration:1.1,ease:'power3.inOut'},.95)
+  .fromTo('.cd-e',{opacity:0},{opacity:1,duration:.8},1.8)
+  .fromTo(cn,{yPercent:118},{yPercent:0,duration:1,stagger:.06,ease:'power3.out'},1.85)
+  .fromTo('.cd-d',{opacity:0,y:6},{opacity:1,y:0,duration:.8},2.3)
+  .to('.env-wrap',{scale:1.55,y:'14%',duration:1.1,ease:'power3.inOut'},3.1)
+  .to('.env-bk,.env-fr,.env-flap,.env-sh',{opacity:0,duration:.6},3.2)
+  .call(wipe,null,3.85)};
+document.querySelector('.env-wrap').addEventListener('click',()=>bk.click());
 /* Navigasi aktif */
 const lk=[...document.querySelectorAll('nav a')],io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)lk.forEach(a=>a.classList.toggle('on',a.hash==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
 lk.forEach(a=>{const t=document.querySelector(a.hash);t&&io.observe(t)});
@@ -711,10 +746,16 @@ const TONE=['#E8DFD0','#C9A394','#6B3A48','#DCCDB8'],TC=['#542B35','#3F1F27','#D
 /* garis Jembatan Ampera (motif identitas Palembang), digambar dari parabola kabel */
 const ampera=()=>{let h='';for(let x=292;x<=508;x+=12){const t=(x-400)/134;h+=`<path d="M${x} ${(92+78*(1-t*t)).toFixed(1)}V238" opacity=".5"/>`}
  return `<svg viewBox="0 0 800 300" preserveAspectRatio="xMidYMax slice" fill="none" stroke="#542B35" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><g opacity=".62"><path d="M0 238H800M0 246H800" opacity=".8"/><path d="M258 238V84h16v154M526 238V84h16v154M250 84h32M518 84h32"/><path d="M0 233C120 228 212 168 266 92M800 233C680 228 588 168 534 92M266 92Q400 248 534 92"/>${h}<path d="M110 268h120M300 280h200M570 266h130" opacity=".45"/></g></svg>`};
+const GI={ampera:'<path d="M12 50V16h5v34M47 50V16h5v34M4 50h56M14 16C24 46 40 46 50 16M2 49C8 49 12 36 14 16M62 49C56 49 52 36 50 16"/>',
+ limas:'<path d="M8 50h48M14 50V36h36v14M10 36l8-12h28l8 12zM20 24l12-10 12 10M28 50V42h8v8"/>',
+ rings:'<circle cx="24" cy="34" r="13"/><circle cx="40" cy="34" r="13"/><path d="M32 8l3 5-3 5-3-5z"/>',
+ songket:'<path d="M32 6l22 26-22 26L10 32zM32 18l12 14-12 14-12-14zM32 28l4 4-4 4-4-4z"/>',
+ musi:'<path d="M4 44c7-5 13-5 20 0s13 5 20 0 10-3 16-1M4 54c7-5 13-5 20 0s13 5 20 0 10-3 16-1M16 34h30l-5 7H21zM30 34V20l12 14"/>'};
+const gicon=t=>GI[t]?`<svg class="pl-i" viewBox="0 0 64 64" aria-hidden="true">${GI[t]}</svg>`:'';
 const media=(src,alt,kind,i,x)=>src?`<img src="${src}" alt="${alt}" loading="lazy" decoding="async">`
  :kind==='m'?`<div class="pl pl-m" aria-hidden="true" style="--pl:${i?'#542B35':'#E6D5C6'};--plc:${i?'#D8BE9A':'#542B35'}"><span>${x||''}</span></div>`
  :kind==='k'?`<div class="pl pl-k" aria-hidden="true">${ampera()}</div>`
- :`<div class="pl" aria-hidden="true" style="--pl:${TONE[i%4]};--plc:${TC[i%4]}"><span>${String(i+1).padStart(2,'0')}</span></div>`;
+ :`<div class="pl" aria-hidden="true" style="--pl:${TONE[i%4]};--plc:${TC[i%4]}">${gicon(x)}<span>${String(i+1).padStart(2,'0')}</span></div>`;
 /* peta: ilustrasi Ampera + pin sebagai dasar; peta Google tersemat menimpanya bila diaktifkan */
 {const vm=document.getElementById('vm');vm.innerHTML='<div class="vm-ill" aria-hidden="true">'+ampera()+'<span class="vm-pin"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span></div>';
  if(C.embedPeta){const f=document.createElement('iframe');f.title='Peta lokasi acara di Google Maps';f.loading='lazy';f.referrerPolicy='no-referrer-when-downgrade';f.src='https://www.google.com/maps?q='+encodeURIComponent(qq)+'&z=16&hl=id&output=embed';vm.append(f)}}
@@ -722,10 +763,10 @@ document.querySelector('[data-ph="kisah"]').innerHTML=media(C.foto.kisah,'Ayu & 
 ['wanita','pria'].forEach((k,i)=>{document.querySelector(`[data-ph="${k}"]`).innerHTML=media(C.foto[k],C[k+'Lengkap'],'m',i,C[k][0])});
 const jr=document.getElementById('jr');
 C.galeri.forEach((it,i)=>{const b=document.createElement('button');b.type='button';b.className='gi rev';b.setAttribute('aria-label','Lihat foto: '+it.cap);
- b.innerHTML=`<span class="gm">${media(it.src,it.cap,'g',i)}</span><span class="gc"><i>${String(i+1).padStart(2,'0')}</i>${it.cap}</span>`;b.onclick=()=>openLb(i,b);jr.append(b)});
+ b.innerHTML=`<span class="gm">${media(it.src,it.cap,'g',i,it.t)}</span><span class="gc"><i>${String(i+1).padStart(2,'0')}</i>${it.cap}</span>`;b.onclick=()=>openLb(i,b);jr.append(b)});
 /* Lightbox */
 const lb=document.getElementById('lb'),ls=document.getElementById('lbS');let cur=0,last=null;
-const show=(i,first)=>{const n=C.galeri.length;cur=(i+n)%n;const it=C.galeri[cur],put=()=>{ls.innerHTML=media(it.src,it.cap,'g',cur)};
+const show=(i,first)=>{const n=C.galeri.length;cur=(i+n)%n;const it=C.galeri[cur],put=()=>{ls.innerHTML=media(it.src,it.cap,'g',cur,it.t)};
  if(first||rmm){put();ls.style.opacity=1}else if(G){gsap.killTweensOf(ls);gsap.to(ls,{opacity:0,duration:.18,onComplete:()=>{put();gsap.to(ls,{opacity:1,duration:.5,ease:'power3.out'})}})}else{ls.style.opacity=0;setTimeout(()=>{put();ls.style.opacity=1},160)}
  document.getElementById('lbT').textContent=it.cap;document.getElementById('lbN').textContent=String(cur+1).padStart(2,'0')+' / '+String(n).padStart(2,'0')};
 const openLb=(i,from)=>{last=from;show(i,true);lb.classList.add('on');document.body.classList.add('lbo');lb.querySelector('.lb-x').focus();
@@ -800,8 +841,8 @@ if(G&&!rm){
   gsap.to(fl,{opacity:1,y:0,duration:.9,stagger:.1,ease:P3,scrollTrigger:trig('#f',{start:'top 84%'})});gsap.to('#wishes',{opacity:1,y:0,duration:.9,ease:P3,scrollTrigger:trig('#wishes',{start:'top 94%'})})}
  /* penutup (tidak diubah): pelan dan tuntas */
  {const ft=document.querySelector('footer'),hh=ft.querySelector('.ft-h'),n=chars(ft.querySelector('.ft-n')),d=ft.querySelector('.ft-d'),wm=ft.querySelector('.wm'),bg=ft.querySelector('.ft-bg svg');ft.dataset.h=1;
-  gsap.set(hh,{opacity:0,y:16});gsap.set(n,{yPercent:118});gsap.set([d,wm],{opacity:0,y:12});
-  gsap.timeline({scrollTrigger:trig(ft,{start:'top 55%'})}).to(hh,{opacity:1,y:0,duration:1.1,ease:P3}).to(n,{yPercent:0,duration:1.8,stagger:.12,ease:E},.3).to(d,{opacity:1,y:0,duration:1.1,ease:P3},1.2).to(wm,{opacity:1,y:0,duration:1,ease:P3},1.5);
+  gsap.set(hh,{opacity:0,y:16});gsap.set(n,{yPercent:118});const up=ft.querySelector('.ft-up');gsap.set([d,up,wm],{opacity:0,y:12});
+  gsap.timeline({scrollTrigger:trig(ft,{start:'top 55%'})}).to(hh,{opacity:1,y:0,duration:1.1,ease:P3}).to(n,{yPercent:0,duration:1.8,stagger:.12,ease:E},.3).to(d,{opacity:1,y:0,duration:1.1,ease:P3},1.2).to(up,{opacity:1,y:0,duration:1,ease:P3},1.4).to(wm,{opacity:1,y:0,duration:1,ease:P3},1.6);
   gsap.fromTo(bg,{yPercent:14,scale:1.06},{yPercent:0,scale:1,ease:'none',scrollTrigger:{trigger:ft,start:'top bottom',end:'bottom bottom',scrub:true}});
   gsap.fromTo(ft,{backgroundColor:'#542B35'},{backgroundColor:'#2A141B',ease:'none',scrollTrigger:{trigger:ft,start:'top 60%',end:'bottom bottom',scrub:true}})}
  /* sisa .rev yang belum ditangani: naik halus */
