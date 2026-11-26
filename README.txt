@@ -27,3 +27,8 @@ Bagian tengah (gerak):
 - Judul bagian muncul kata demi kata lewat mask; garis pemisah digambar; bagian gelap (Acara, Galeri) melebar penuh saat masuk.
 - Tahun di rel Kisah Kami menempel dan berganti sesuai bab yang dibaca (desktop).
 - Tanpa GSAP / reduced-motion: semua konten tampil langsung (cadangan IntersectionObserver).
+
+Performa & stabilitas HP:
+- Tekstur kertas kini assets/paper.png (sebelumnya SVG feTurbulence yang berat saat scroll). Folder assets/ wajib ikut.
+- Hero dibungkus .hero-clip agar zoom saat buka undangan tidak melebarkan halaman (penyebab scroll ke kanan).
+- Mode ringan (layar sentuh / <900px): efek paralaks & pelebaran bagian gelap saat scroll dimatikan.

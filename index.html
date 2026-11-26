@@ -22,7 +22,7 @@
  --line:rgba(84,43,53,.16);--line-l:rgba(247,243,235,.2);
  --serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;
  --pad:clamp(72px,12vw,136px);--gut:24px;--ease:cubic-bezier(.2,.7,.2,1);--w:max(100vw,900px);
- --paper:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .33 0 0 0 0 .17 0 0 0 0 .21 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+ --paper:url("assets/paper.png");
  color-scheme:light}
 
 /* ---------- dasar ---------- */
@@ -106,7 +106,7 @@ html:not(.gs) .env-card{transform:translateY(-74%)}
 html:not(.gs) body:not(.opened) .hero-txt>*{opacity:0}
 html:not(.gs) .opened .hero-txt>*{animation:rise 1.2s var(--ease) 1.3s both}
 
-@media(min-aspect-ratio:3/2){.l-city{bottom:calc(var(--w)*.15 - 10svh)}.hero-txt{top:max(5.5svh,40px)}.hero-txt h1{font-size:clamp(60px,min(17vw,13svh),128px)}}
+@media(min-aspect-ratio:3/2){.l-city{bottom:calc(var(--w)*.15 - 17svh)}.l-river{bottom:-7svh}.sun{bottom:24%}.fade{height:64px}.hero-txt{top:max(5.5svh,40px)}.hero-txt h1{font-size:clamp(60px,min(17vw,13svh),128px)}}
 /* intro hero: fajar, awan, burung, perahu, lalu nama */
 .dawn{position:absolute;inset:0;z-index:3;background:#26101C;opacity:0;pointer-events:none}
 .fx{position:absolute;left:0;right:0;top:0;height:62%;overflow:hidden;pointer-events:none}
@@ -144,14 +144,14 @@ body.lock nav{opacity:0;pointer-events:none}nav{transition:opacity .8s}
 @keyframes sail{from{transform:translateX(700px)}to{transform:none}}
 
 /* ---------- navigasi & musik ---------- */
-nav{position:fixed;z-index:20;left:50%;translate:-50% 0;bottom:calc(14px + env(safe-area-inset-bottom,0px));display:flex;gap:2px;max-width:94vw;padding:5px;border:1px solid var(--line);border-radius:999px;background:rgba(247,243,235,.94)}
+nav{position:fixed;z-index:20;left:0;right:0;margin-inline:auto;width:max-content;transform:translateZ(0);bottom:calc(14px + env(safe-area-inset-bottom,0px));display:flex;gap:2px;max-width:94vw;padding:5px;border:1px solid var(--line);border-radius:999px;background:rgba(247,243,235,.94)}
 nav a{padding:10px 12px;border-radius:999px;font-size:13px;font-weight:500;text-decoration:none;color:var(--wine);transition:background .3s,color .3s}
 nav a:hover{background:var(--champagne)}nav a.on{background:var(--wine);color:var(--ivory)}
 #mus .eq{display:flex;align-items:flex-end;justify-content:center;gap:2.5px;height:14px}#mus .eq i{width:2px;height:100%;border-radius:1px;background:currentColor;transform-origin:bottom;transform:scaleY(.6)}
 #mus.on .eq i{animation:eq 1s ease-in-out infinite alternate}#mus .eq i:nth-child(2){animation-delay:-.4s}#mus .eq i:nth-child(3){animation-delay:-.75s}
 @keyframes eq{from{transform:scaleY(.2)}to{transform:scaleY(1)}}
 #mus{display:grid;place-items:center;padding:0;transition:background .3s,transform .2s}#mus:hover{background:var(--champagne)}#mus:active{transform:scale(.94)}
-#mus{position:fixed;z-index:20;right:14px;top:calc(14px + env(safe-area-inset-top,0px));width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:rgba(247,243,235,.94);color:var(--wine);font-size:17px;cursor:pointer}
+#mus{position:fixed;z-index:20;will-change:transform;right:14px;top:calc(14px + env(safe-area-inset-top,0px));width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:rgba(247,243,235,.94);color:var(--wine);font-size:17px;cursor:pointer}
 
 /* =========================================================
    BAGIAN TENGAH · sistem editorial
@@ -394,6 +394,13 @@ footer.ft{position:relative;overflow:hidden;display:grid;align-content:center;mi
 @keyframes zin{from{transform:scale(1.04)}}
 @media(max-width:380px){nav a{padding:10px 9px;font-size:12px}}
 @media(prefers-reduced-motion:reduce){.bd{display:none}*{animation:none!important;scroll-behavior:auto!important}.jsr .rev{opacity:1!important;transform:none!important;transition:none!important}#cover,.gm,#lb,.lb-s{transition:none!important}}
+
+/* ---------- stabilitas & performa HP ---------- */
+body,.bg-champ,#cover,.env-card,.loc-i,.vm{background-size:180px 180px}
+.hero-clip{position:relative;overflow:hidden}
+@supports (overflow:clip){html,body{overflow-x:clip}}
+@media(pointer:coarse){.medal::after{animation:none}.vm-pin::after{display:none}}
+@media(max-width:899px){.vm iframe{filter:none}}
 </style>
 </head>
 <body class="lock">
@@ -428,6 +435,7 @@ footer.ft{position:relative;overflow:hidden;display:grid;align-content:center;mi
 </div>
 <nav aria-label="Navigasi utama"><a href="#top">Awal</a><a href="#mempelai">Mempelai</a><a href="#acara">Acara</a><a href="#galeri">Galeri</a><a href="#rsvp">RSVP</a></nav>
 
+<div class="hero-clip">
 <header class="hero" id="top">
   <div class="ly l-sky" data-l><div class="sun"></div></div>
   <div class="dawn"></div>
@@ -462,6 +470,7 @@ footer.ft{position:relative;overflow:hidden;display:grid;align-content:center;mi
   </div>
   <div class="fade"></div><div class="hint">Gulir</div>
 </header>
+</div>
 
 <main id="konten" tabindex="-1">
 
@@ -603,7 +612,8 @@ C.tglPanjang=dp({weekday:'long',day:'numeric',month:'long',year:'numeric'});
 C.tglS=dp({day:'numeric',month:'short',year:'numeric'});C.hari=dp({weekday:'long'});C.tgl=dp({day:'numeric'});C.blnThn=dp({month:'long',year:'numeric'});
 document.querySelectorAll('[data-k]').forEach(e=>e.textContent=C[e.dataset.k]);
 const G=document.documentElement.classList.contains('gs'),rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
-if(G)gsap.registerPlugin(ScrollTrigger);
+if(G){gsap.registerPlugin(ScrollTrigger);ScrollTrigger.config({ignoreMobileResize:true})}
+const lite=matchMedia('(max-width:899px), (pointer:coarse)').matches; /* mode ringan: HP & layar sentuh */
 /* util teks: pecah kata / huruf berbungkus mask untuk reveal */
 const words=el=>{const t=el.textContent.trim();el.textContent='';t.split(/\s+/).forEach((w,i,a)=>{const m=document.createElement('span');m.className='w';const x=document.createElement('span');x.textContent=w;m.append(x);el.append(m);if(i<a.length-1)el.append(' ')});return el.querySelectorAll('.w>span')};
 const chars=el=>{el.querySelectorAll('[data-k],i').forEach(n=>{if(n.tagName==='I'){const c=document.createElement('span');c.className='c';c.innerHTML=n.innerHTML;n.replaceChildren(c);return}
@@ -740,12 +750,12 @@ if(G&&!rm){
  const trig=(el,o)=>Object.assign({trigger:el,start:'top 84%',once:true},o);
  const scrub=(t,o)=>Object.assign({trigger:t,start:'top bottom',end:'bottom top',scrub:true},o);
  const isI=im=>im&&im.tagName==='IMG';
- const par=(im,ph,a)=>isI(im)&&gsap.fromTo(im,{yPercent:-(a||6)},{yPercent:a||6,ease:'none',scrollTrigger:scrub(ph)});
+ const par=(im,ph,a)=>isI(im)&&!lite&&gsap.fromTo(im,{yPercent:-(a||6)},{yPercent:a||6,ease:'none',scrollTrigger:scrub(ph)});
  /* foto dibuka dengan mask sinematik, lalu skala turun perlahan */
  const unveil=(box,im,dir,tr)=>{gsap.set(box,{clipPath:{down:'inset(0% 0% 100% 0%)',right:'inset(0% 100% 0% 0%)',up:'inset(100% 0% 0% 0%)'}[dir||'down']});isI(im)&&gsap.set(im,{scale:1.3});
   const t=gsap.timeline({scrollTrigger:tr}).to(box,{clipPath:'inset(0% 0% 0% 0%)',duration:1.5,ease:'expo.inOut'});isI(im)&&t.to(im,{scale:1.12,duration:2.1,ease:P3},0);return t};
  /* transisi antar bagian: bagian gelap "melebar" hingga penuh layar saat masuk */
- ['acara','galeri'].forEach(id=>{const s=document.getElementById(id);gsap.fromTo(s,{clipPath:'inset(40px 20px 0px 20px)'},{clipPath:'inset(0px 0px 0px 0px)',ease:'none',scrollTrigger:{trigger:s,start:'top bottom',end:'top 22%',scrub:true}})});
+ !lite&&['acara','galeri'].forEach(id=>{const s=document.getElementById(id);gsap.fromTo(s,{clipPath:'inset(40px 20px 0px 20px)'},{clipPath:'inset(0px 0px 0px 0px)',ease:'none',scrollTrigger:{trigger:s,start:'top bottom',end:'top 22%',scrub:true}})});
  /* judul bagian: label naik, kata muncul lewat mask */
  document.querySelectorAll('.sec-h').forEach(h=>{h.dataset.h=1;const l=h.querySelector('.label'),w=words(h.querySelector('h2')),su=h.querySelector('.sub');
   gsap.set(l,{opacity:0,y:10});gsap.set(w,{yPercent:115});su&&gsap.set(su,{opacity:0,y:12});
@@ -799,10 +809,12 @@ if(G&&!rm){
  const rf=()=>ScrollTrigger.refresh();addEventListener('load',rf);document.fonts&&document.fonts.ready.then(rf)}
 /* Kedalaman hero: tiga lapis bergerak dengan kecepatan berbeda (ScrollTrigger) */
 if(G&&!rm){const hs={trigger:'.hero',start:'top top',end:'bottom top',scrub:true};
- gsap.to('.l-sky',{y:()=>innerHeight*.26,ease:'none',scrollTrigger:hs});
- gsap.to('.l-city',{y:()=>innerHeight*.14,ease:'none',scrollTrigger:hs});
+ if(!lite){gsap.to('.l-sky',{y:()=>innerHeight*.26,ease:'none',scrollTrigger:hs});
+ gsap.to('.l-city',{y:()=>innerHeight*.14,ease:'none',scrollTrigger:hs})}
+ /* hero yang sudah lewat tidak perlu digambar */
+ {const hh=document.querySelector('.hero');ScrollTrigger.create({trigger:'.hero-clip',start:'bottom top',onEnter:()=>{hh.style.visibility='hidden'},onLeaveBack:()=>{hh.style.visibility=''}})}
  gsap.to('.hero-txt',{y:()=>innerHeight*.12,opacity:0,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'62% top',scrub:true}})}
-else if(!G&&!rm){const txt=document.querySelector('.hero-txt'),HL=[['.l-sky',.12],['.l-city',.07],['.hero-txt',.22]].map(([q,v])=>[document.querySelector(q),v]);let tk=0;
+else if(!G&&!rm&&!lite){const txt=document.querySelector('.hero-txt'),HL=[['.l-sky',.12],['.l-city',.07],['.hero-txt',.22]].map(([q,v])=>[document.querySelector(q),v]);let tk=0;
  const upd=()=>{tk=0;const H=innerHeight,sy=scrollY;if(sy>H*1.4)return;const s=Math.min(sy,H*1.1);
   HL.forEach(([e,v])=>e.style.transform='translate3d(0,'+(v*s).toFixed(1)+'px,0)');
   txt.style.opacity=Math.max(0,Math.min(1,1-Math.max(0,s-H*.2)/(H*.55))).toFixed(2)};
