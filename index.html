@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F7F3EB">
+<meta name="color-scheme" content="light">
+<title>Undangan Pernikahan Ayu &amp; Arya</title>
+<script src="assets/gsap.min.js"></script><script src="assets/ScrollTrigger.min.js"></script>
+<script>if(window.gsap&&window.ScrollTrigger)document.documentElement.classList.add("gs");try{history.scrollRestoration="manual"}catch(e){}</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   Modern Palembang Editorial Wedding
+   Palet: ivory · champagne · deep wine · antique gold · muted rose
+   ========================================================= */
+:root{
+ --ivory:#F7F3EB;--champagne:#E8DFD0;--wine:#542B35;--gold:#A47C58;--rose:#B77D69;
+ --wine-d:#3F1F27;--ink:#3A2128;--muted:#6E5A5E;
+ --gold-t:#7C5A3D;            /* emas untuk teks kecil di atas ivory (kontras ≥ 4.5) */
+ --gold-l:#D8BE9A;            /* emas terang untuk teks di atas wine */
+ --line:rgba(84,43,53,.16);--line-l:rgba(247,243,235,.2);
+ --serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;
+ --pad:clamp(72px,12vw,136px);--gut:24px;--ease:cubic-bezier(.2,.7,.2,1);--w:max(100vw,900px);
+ --paper:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .33 0 0 0 0 .17 0 0 0 0 .21 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+ color-scheme:light}
+
+/* ---------- dasar ---------- */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);scrollbar-gutter:stable;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ivory) var(--paper);color:var(--ink);font:400 16px/1.7 var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body.lock{overflow:hidden}
+h1,h2,h3{margin:0;font-family:var(--serif);font-weight:500;line-height:1.08;color:var(--wine)}
+p{margin:0}
+a{color:inherit}
+img{max-width:100%}
+section,footer{position:relative;padding:var(--pad) var(--gut)}
+.wrap{max-width:1040px;margin:0 auto}
+.narrow{max-width:640px;margin:0 auto}
+.center{text-align:center}
+.bg-champ{background:var(--champagne) var(--paper)}
+.bg-wine{background:var(--wine);color:var(--ivory)}
+.bg-wine h2,.bg-wine h3,.bg-dark h2,.bg-dark h3{color:var(--ivory)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:12px;top:-70px;z-index:300;padding:12px 18px;background:var(--wine);color:var(--ivory);font-weight:500;border-radius:3px;text-decoration:none}.skip:focus{top:calc(10px + env(safe-area-inset-top,0px))}
+:focus-visible{outline:2px solid var(--wine);outline-offset:3px}
+.bg-wine :focus-visible,.bg-dark :focus-visible,#cover :focus-visible,#lb :focus-visible{outline-color:var(--gold-l)}
+main:focus{outline:none}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 28px;border:1px solid var(--wine);border-radius:3px;background:var(--wine);color:var(--ivory);font:500 15px var(--sans);letter-spacing:.02em;text-decoration:none;cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+.btn:hover{background:var(--wine-d);border-color:var(--wine-d)}
+.btn{transition-property:background,color,border-color,transform,opacity}.btn:active{transform:translateY(1px) scale(.985)}.btn:disabled{opacity:.72;cursor:default}
+.btn.o{background:transparent;color:var(--wine)}.btn.o:hover{background:var(--wine);color:var(--ivory)}
+.link{display:inline-block;padding-bottom:4px;font:500 15px var(--sans);color:var(--wine);text-decoration:none;background:linear-gradient(var(--wine),var(--wine)) 0 100%/0 1px no-repeat,linear-gradient(var(--gold),var(--gold)) 0 100%/100% 1px no-repeat;transition:background-size .55s var(--ease)}.link:hover,.link:focus-visible{background-size:100% 1px,100% 1px}
+
+/* ---------- cover pembuka: amplop 3D di atas kertas ivory ---------- */
+#cover{position:fixed;inset:0;z-index:100;display:grid;place-items:center;overflow:hidden;background:var(--ivory) var(--paper);color:var(--wine)}
+#veil{position:fixed;inset:0;z-index:99;background:var(--wine-d)}
+#cover.go{pointer-events:none}
+.cv-in{display:flex;flex-direction:column;align-items:center;width:100%;max-width:520px;padding:max(20px,env(safe-area-inset-top)) 24px max(20px,env(safe-area-inset-bottom));text-align:center}
+.cv-g{display:grid;gap:8px;justify-items:center}
+.cv-k{font:500 11px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold-t)}
+.cv-name{margin:0;font:400 clamp(30px,8vw,44px)/1.15 var(--serif);color:var(--wine);max-width:14em}
+.cv-sub{font:italic 400 clamp(16px,4vw,18px) var(--serif);color:var(--muted)}
+.env-wrap{--ew:min(82vw,380px,46svh);position:relative;margin:clamp(14px,3svh,32px) 0 clamp(18px,3.4svh,32px);padding-top:calc(var(--ew)*.4)}
+.env{position:relative;width:var(--ew);height:calc(var(--ew)*.68)}
+.env-sh{position:absolute;left:8%;right:8%;bottom:-12px;height:22px;background:radial-gradient(ellipse at center,rgba(84,43,53,.3),transparent 70%);filter:blur(6px)}
+.env-bk{position:absolute;inset:0;background:linear-gradient(#DDD0BA,#D3C4AA);border-radius:2px}
+.env-card{position:absolute;left:5.5%;right:5.5%;top:10%;bottom:5%;z-index:2;background:#FCFAF5 var(--paper);box-shadow:0 10px 26px -12px rgba(84,43,53,.45)}
+.card-in{position:absolute;inset:8px;display:grid;place-content:center;gap:6px;padding:0 6px;text-align:center;border:1px solid rgba(164,124,88,.5)}
+.cd-e{font:italic 400 clamp(14px,3.8vw,16px) var(--serif);color:var(--gold-t)}
+.cd-n{margin:0;font:400 clamp(32px,9.4vw,46px)/1 var(--serif);color:var(--wine);overflow:hidden;padding:.06em .1em .16em;margin:-.06em -.1em -.16em}
+.cd-n i{padding:0 .1em;font-size:.6em;color:var(--rose)}
+.cd-d{font:500 10.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.env-fr{position:absolute;inset:0;width:100%;height:100%;z-index:3;display:block}
+.env-flap{position:absolute;left:0;top:0;width:100%;height:54.4%;z-index:4;transform-origin:50% 0;transform-style:preserve-3d}
+.fl-f,.fl-b{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fl-b{transform:rotateX(180deg)}
+.fl-f svg,.fl-b svg{display:block;width:100%;height:100%}
+.seal{position:absolute;left:50%;top:100%;display:grid;place-items:center;width:clamp(34px,10vw,42px);aspect-ratio:1;border-radius:50%;transform:translate(-50%,-64%);background:radial-gradient(circle at 35% 30%,#7A3A48,var(--wine) 60%,#3F1F27);box-shadow:0 3px 8px rgba(40,10,20,.4),inset 0 0 0 3px rgba(216,190,154,.35);color:var(--gold-l);font:italic 400 clamp(11px,3vw,14px) var(--serif);letter-spacing:.02em}
+.cv-b{margin-top:2px;gap:14px;padding:10px 10px 10px 26px}
+.cv-b i{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--ivory);color:var(--wine);transition:transform .3s}
+.cv-b:hover i{transform:translateX(3px)}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:.08em .04em .16em;margin:-.08em -.04em -.16em}.w>span{display:inline-block}
+.c{display:inline-block}
+.gs .cv-k,.gs .cv-sub,.gs .env-wrap,.gs .cv-b,.gs .cd-e,.gs .cd-d,.gs .cv-name,.gs .cd-n{opacity:0}
+html:not(.gs) .env-flap{transform:perspective(900px) rotateX(-180deg);z-index:1}
+html:not(.gs) .env-card{transform:translateY(-74%)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;height:100svh;min-height:600px;overflow:hidden;background:#35192A;isolation:isolate}
+.ly{position:absolute;left:0;right:0;will-change:transform}
+.ly svg{display:block;width:max(100%,900px);height:auto;margin-left:min(0px,calc((100% - 900px)/2))}
+.l-sky{inset:-30% 0 0 0;background:linear-gradient(#35192A 0%,#5E3140 24%,#8E5160 46%,#C08572 68%,#E3BE98 86%,#F0D9B8 100%)}
+.sun{position:absolute;left:50%;bottom:31%;width:min(64vw,440px);aspect-ratio:1;translate:-50% 0;border-radius:50%;background:radial-gradient(circle,rgba(255,240,208,.95) 0 13%,rgba(247,214,160,.5) 30%,rgba(247,214,160,0) 66%)}
+.l-city{bottom:calc(var(--w)*.15)}.l-river{bottom:0}
+.shade{position:absolute;inset:0;z-index:3;background:linear-gradient(rgba(36,16,24,.55) 0%,rgba(36,16,24,.22) 36%,transparent 58%)}
+.fade{position:absolute;left:0;right:0;bottom:0;height:96px;z-index:4;background:linear-gradient(transparent,var(--ivory))}
+.hero-txt{position:absolute;z-index:5;left:0;right:0;top:max(7svh,52px);padding:0 28px;text-align:center;color:var(--ivory)}
+.hero-eyebrow{font:italic 400 clamp(19px,4.6vw,24px) var(--serif);color:#EBD3BC}
+.hero-txt h1{display:block;overflow:hidden;margin:8px -.12em 14px;padding:.06em .12em .16em;font-size:clamp(60px,min(17vw,14svh),140px);font-weight:400;line-height:.98;letter-spacing:-.01em;color:var(--ivory)}
+.hero-txt h1 i{padding:0 .1em;font-size:.6em;color:#E3C3A4}
+.hero-txt p.dt{font:500 13px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:rgba(247,243,235,.9)}
+.hint{position:absolute;z-index:5;bottom:26px;left:50%;translate:-50% 0;font:500 12px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--wine)}
+.gs .hero-eyebrow,.gs .hero-txt .dt{opacity:0}.gs .hero-txt h1 .c{opacity:0}
+html:not(.gs) body:not(.opened) .hero-txt>*{opacity:0}
+html:not(.gs) .opened .hero-txt>*{animation:rise 1.2s var(--ease) 1.3s both}
+
+@media(min-aspect-ratio:3/2){.l-city{bottom:calc(var(--w)*.15 - 10svh)}.hero-txt{top:max(5.5svh,40px)}.hero-txt h1{font-size:clamp(60px,min(17vw,13svh),128px)}}
+/* intro hero: fajar, awan, burung, perahu, lalu nama */
+.dawn{position:absolute;inset:0;z-index:3;background:#26101C;opacity:0;pointer-events:none}
+.fx{position:absolute;left:0;right:0;top:0;height:62%;overflow:hidden;pointer-events:none}
+.cl{position:absolute;left:0;width:min(46vw,300px);height:auto;fill:#F6DCC6;opacity:.34}
+.cl.c1{top:20%}.cl.c2{top:34%;width:min(34vw,220px);opacity:.26}.cl.c3{top:11%;width:min(28vw,180px);opacity:.22}
+.bd{position:absolute;left:0;width:26px;height:auto;fill:none;stroke:#2E1620;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:0}
+.bd path{transform-box:fill-box;transform-origin:50% 100%}
+.opened .dawn{animation:dawn 2.4s ease-out .3s both}
+.opened .sun{animation:sunup 2.6s var(--ease) .3s backwards}
+.opened #lamps{animation:fin 1.4s ease 3.2s backwards}
+.opened .cl{animation:cdrift 70s linear 0s both}.opened .cl.c1{--x0:-30vw;--x1:78vw}.opened .cl.c2{--x0:92vw;--x1:20vw}.opened .cl.c3{--x0:8vw;--x1:96vw}
+.opened .bd{animation:bfly 6.5s linear var(--bd,0s) both}.opened .bd path{animation:flap .55s ease-in-out var(--bd,0s) 12 alternate}
+.opened .bt{animation:sail 4s cubic-bezier(.22,.7,.2,1) .7s backwards}
+/* urutan adegan (dipadatkan): fajar > matahari > sungai > menara > dek > kabel > lampu > perahu; nama hadir di tengah adegan lewat GSAP */
+.opened .l-river{animation:rvin 1.3s var(--ease) .7s backwards}
+.opened #shim{animation:fin 1.4s ease 1.4s backwards}
+.opened #sky-line{animation:fin 1.4s ease .8s backwards}
+.opened .pf{animation:fin 1s ease 1s backwards}
+.tw,.dk{transform-box:fill-box}.tw{transform-origin:50% 100%}.dk{transform-origin:50% 50%}
+.opened .tw{animation:twr 1.2s var(--ease) 1.1s backwards}.opened .tw2{animation-delay:1.35s}
+.opened .dk{animation:dkx 1.3s var(--ease) 1.8s backwards}
+.opened .cab path{animation:cabdraw 1.6s ease-in-out 2.3s backwards}
+.opened .hint{animation:fade 1s ease 4.4s backwards}
+@keyframes rvin{from{opacity:0;transform:translate3d(0,28px,0)}}
+@keyframes twr{from{transform:scaleY(0)}}
+@keyframes dkx{from{transform:scaleX(0)}}
+@keyframes cabdraw{from{stroke-dasharray:1;stroke-dashoffset:1}to{stroke-dasharray:1;stroke-dashoffset:0}}
+body.lock nav{opacity:0;pointer-events:none}nav{transition:opacity .8s}
+@keyframes dawn{from{opacity:.85}to{opacity:0}}
+@keyframes sunup{from{transform:translateY(42%);opacity:.2}to{transform:none;opacity:1}}
+@keyframes fin{from{opacity:0}}
+@keyframes cdrift{from{transform:translate3d(var(--x0),0,0)}to{transform:translate3d(var(--x1),0,0)}}
+@keyframes bfly{0%{transform:translate3d(-12vw,var(--y0,0),0);opacity:0}8%{opacity:.85}88%{opacity:.85}100%{transform:translate3d(112vw,var(--y1,-60px),0);opacity:0}}
+@keyframes flap{from{transform:scaleY(1)}to{transform:scaleY(.25)}}
+@keyframes sail{from{transform:translateX(700px)}to{transform:none}}
+
+/* ---------- navigasi & musik ---------- */
+nav{position:fixed;z-index:20;left:50%;translate:-50% 0;bottom:calc(14px + env(safe-area-inset-bottom,0px));display:flex;gap:2px;max-width:94vw;padding:5px;border:1px solid var(--line);border-radius:999px;background:rgba(247,243,235,.94)}
+nav a{padding:10px 12px;border-radius:999px;font-size:13px;font-weight:500;text-decoration:none;color:var(--wine);transition:background .3s,color .3s}
+nav a:hover{background:var(--champagne)}nav a.on{background:var(--wine);color:var(--ivory)}
+#mus .eq{display:flex;align-items:flex-end;justify-content:center;gap:2.5px;height:14px}#mus .eq i{width:2px;height:100%;border-radius:1px;background:currentColor;transform-origin:bottom;transform:scaleY(.6)}
+#mus.on .eq i{animation:eq 1s ease-in-out infinite alternate}#mus .eq i:nth-child(2){animation-delay:-.4s}#mus .eq i:nth-child(3){animation-delay:-.75s}
+@keyframes eq{from{transform:scaleY(.2)}to{transform:scaleY(1)}}
+#mus{display:grid;place-items:center;padding:0;transition:background .3s,transform .2s}#mus:hover{background:var(--champagne)}#mus:active{transform:scale(.94)}
+#mus{position:fixed;z-index:20;right:14px;top:calc(14px + env(safe-area-inset-top,0px));width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:rgba(247,243,235,.94);color:var(--wine);font-size:17px;cursor:pointer}
+
+/* =========================================================
+   BAGIAN TENGAH · sistem editorial
+   Pembuka · Mempelai · Kisah · Acara · Lokasi · Galeri · RSVP
+   Aturan: satu garis rambut (hairline) sebagai pemisah, tipografi sebagai
+   dekorasi, tanpa bayangan/bingkai/gradasi. Warna hanya dari token :root.
+   ========================================================= */
+main{font-variant-numeric:lining-nums}
+main .wrap{max-width:1240px}
+main .label{display:inline-flex;align-items:center;gap:14px;font:500 11.5px/1.4 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--gold-t)}
+main .label::before{content:"";width:34px;height:1px;background:currentColor;opacity:.65}
+.bg-wine .label,.bg-dark .label{color:var(--gold-l)}
+.bg-dark{background:var(--wine-d);color:var(--ivory)}
+.sec-h{margin:0 0 clamp(48px,7vw,96px)}
+.sec-h h2{margin:18px 0 0;max-width:9em;font:400 clamp(50px,9vw,120px)/.92 var(--serif);letter-spacing:-.018em;color:var(--wine)}
+.bg-wine .sec-h h2,.bg-dark .sec-h h2{color:var(--ivory)}
+.sec-h .sub{margin:0;max-width:22em;font:italic 400 clamp(19px,2.2vw,23px)/1.5 var(--serif);color:var(--muted)}
+.bg-dark .sec-h .sub{color:rgba(247,243,235,.72)}
+.sec-h--row{display:grid;gap:22px;align-items:end}
+@media(min-width:860px){.sec-h--row{grid-template-columns:1fr auto;gap:56px}.sec-h--row .sub{text-align:right;padding-bottom:.9em}}
+main .btn{min-height:52px;padding:14px 30px;border-radius:0;gap:12px;font:500 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase}
+main .btn.o{border-color:currentColor}
+/* placeholder foto: bidang warna senada + tipografi; foto asli otomatis menggantikan */
+.ph,.story-ph,.gm{position:relative;overflow:hidden}
+.ph>*,.story-ph>*,.gm>*{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
+.pl{display:flex;align-items:flex-end;padding:clamp(14px,2vw,26px);background:var(--pl,var(--champagne));color:var(--plc,var(--wine));font-family:var(--serif)}
+.pl span{font-weight:300;font-size:clamp(46px,6vw,84px);line-height:.8;letter-spacing:-.02em}
+.pl-m{align-items:center;justify-content:center;padding:0}.pl-m span{font-size:clamp(150px,26vw,320px);line-height:.7;transform:translateY(.04em)}
+.pl-k{padding:0;background:#DCCDB8}.pl-k svg{display:block;width:100%;height:100%}
+
+/* ---------- pembuka ---------- */
+#pembuka{padding-block:clamp(96px,15vw,184px) clamp(72px,11vw,150px)}
+.open{display:grid;gap:34px}
+.open-b{max-width:56rem}
+.lead{margin:0;font:400 clamp(27px,3.7vw,46px)/1.26 var(--serif);letter-spacing:-.006em;color:var(--wine)}
+.lead em{font-style:italic;color:var(--gold-t)}
+.quote{position:relative;margin:clamp(48px,7vw,92px) 0 clamp(36px,5vw,56px);padding-left:clamp(22px,3vw,40px)}
+.quote::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:1px;background:var(--rose);transform-origin:top;transform:scaleY(var(--ln,1))}
+.quote p{max-width:33em;font:italic 400 clamp(19px,2vw,23px)/1.7 var(--serif);color:var(--ink)}
+.quote cite{display:block;margin-top:18px;font:500 11.5px var(--sans);font-style:normal;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-t)}
+.link::after{content:"\2192";display:inline-block;margin-left:12px;transition:transform .4s var(--ease)}.link:hover::after,.link:focus-visible::after{transform:translateX(6px)}
+@media(min-width:900px){.open{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:28px}.open>.label{grid-column:1/4;padding-top:1.1em;align-self:start}.open-b{grid-column:4/13}}
+
+/* ---------- mempelai: dua potret, ukuran dan posisi berbeda ---------- */
+#mempelai{padding-top:clamp(24px,4vw,48px)}
+.duo{display:grid;gap:clamp(64px,10vw,96px)}
+.pc{width:100%}
+.pc--a .ph,.pc--b .ph{aspect-ratio:4/5}
+.pc--b{width:100%}
+@media(min-width:560px) and (max-width:859px){.pc{max-width:560px;margin-inline:auto}}
+.pi{padding-top:clamp(22px,3vw,34px)}
+.role{font:500 11.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--gold-t)}
+.pi h3{margin:12px 0 14px;max-width:9em;font:400 clamp(40px,5.4vw,68px)/.98 var(--serif);letter-spacing:-.012em;color:var(--wine)}
+.par{max-width:22em;font:italic 400 clamp(19px,2vw,22px)/1.5 var(--serif);color:var(--muted)}
+@media(max-width:859px){.pi{text-align:center}.pi h3{margin:12px auto 14px}.par{margin-inline:auto}}
+@media(min-width:860px){.duo{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(16px,2.4vw,32px);align-items:start}
+ .pc--a{grid-column:1/7}.pc--b{grid-column:8/13;width:auto;margin:clamp(140px,19vw,280px) 0 0}}
+
+/* ---------- kisah kami: rel tahun yang menempel, bab di kanan ---------- */
+#kisah{padding-block:clamp(96px,14vw,180px)}
+.story-ph{margin:0 0 clamp(72px,11vw,150px);aspect-ratio:4/3;background:#DCCDB8}
+@media(min-width:760px){.story-ph{aspect-ratio:21/9}}
+.story{display:grid}
+.rail{display:none}
+.ch{padding:clamp(44px,6vw,80px) 0;border-top:1px solid var(--line)}
+.ch:first-child{padding-top:0;border-top:0}.ch:last-child{padding-bottom:0}
+.ch-no{font:500 11.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--gold-t)}
+.ch h3{margin:16px 0 20px;font:400 clamp(42px,6.4vw,84px)/.96 var(--serif);letter-spacing:-.014em;color:var(--wine)}
+.ch-tx>p:not([class]){max-width:30em;font-size:17px;line-height:1.8;color:var(--ink)}
+.ch-q{max-width:20em;margin-top:28px;font:italic 400 clamp(22px,2.8vw,30px)/1.4 var(--serif);color:var(--wine)}
+@media(min-width:900px){.story{grid-template-columns:5fr 7fr;column-gap:clamp(48px,7vw,112px)}
+ .rail{display:block}.rail-in{position:sticky;top:clamp(96px,17vh,170px)}
+ .rail-k{font:500 11.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--gold-t)}
+ .rail-y{position:relative;height:clamp(120px,15vw,210px);margin-top:18px}
+ .rail-y span{font-variant-numeric:lining-nums;position:absolute;left:-.04em;top:0;font:300 clamp(110px,14.5vw,208px)/.9 var(--serif);letter-spacing:-.03em;color:var(--wine);opacity:0;transform:translate3d(0,26%,0);transition:opacity .8s var(--ease),transform .9s var(--ease)}
+ .rail-y span.on{opacity:1;transform:none}
+ .ch:first-child{padding-top:clamp(8px,2vw,24px)}}
+
+/* ---------- acara: medali tanggal, hitung mundur, kartu acara ---------- */
+#acara{padding-top:calc(var(--pad) + 14px)}
+.band{position:absolute;left:0;right:0;top:0;height:14px;background:var(--wine-d) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='14'%3E%3Cpath d='M11 1.5L17.5 7 11 12.5 4.5 7z' fill='none' stroke='%23D8BE9A' stroke-width='.9'/%3E%3Cpath d='M0 7h3M19 7h3' stroke='%23D8BE9A' stroke-width='.9'/%3E%3Ccircle cx='11' cy='7' r='1.1' fill='%23D8BE9A'/%3E%3C/svg%3E") 0 0/22px 14px repeat-x}
+.sec-h--c{text-align:center}
+.sec-h--c .label{justify-content:center}
+.sec-h--c .label::after{content:"";width:34px;height:1px;background:currentColor;opacity:.65}
+.sec-h--c h2{margin-inline:auto}
+#acara .sec-h{margin-bottom:clamp(40px,6vw,72px)}
+.ac{display:grid;gap:clamp(36px,6vw,56px);justify-items:center}
+.ac-l{display:grid;gap:clamp(24px,4vw,36px);justify-items:center;width:100%}
+.medal{--md:min(86vw,340px);position:relative;display:grid;place-content:center;justify-items:center;width:var(--md);aspect-ratio:1;text-align:center}
+.medal::before,.medal::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.medal::before{inset:0;border:1px solid rgba(216,190,154,.55)}
+.medal::after{inset:clamp(10px,2.4vw,16px);border:1px dashed rgba(216,190,154,.34);animation:spin 120s linear infinite}
+.medal>i{position:absolute;width:9px;height:9px;background:var(--gold-l);transform:rotate(45deg)}
+.medal>i:nth-child(1){top:-4.5px;left:calc(50% - 4.5px)}.medal>i:nth-child(2){bottom:-4.5px;left:calc(50% - 4.5px)}
+.medal>i:nth-child(3){left:-4.5px;top:calc(50% - 4.5px)}.medal>i:nth-child(4){right:-4.5px;top:calc(50% - 4.5px)}
+.md-h{display:flex;align-items:center;gap:12px;font:500 12px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--ivory)}
+.md-h::before,.md-h::after{content:"";width:22px;height:1px;background:var(--gold-l);opacity:.7}
+.md-n{display:block;margin:.04em 0 .02em;font:300 clamp(120px,36vw,176px)/.86 var(--serif);letter-spacing:-.03em;color:var(--ivory);font-variant-numeric:lining-nums}
+.md-n .w{padding:.16em .06em .1em;margin:-.16em -.06em -.1em}
+.md-b{font:italic 400 clamp(22px,5.6vw,28px)/1.2 var(--serif);color:var(--gold-l)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cd{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,1.6vw,14px);width:100%;max-width:440px}
+.cd div{padding:16px 4px 14px;border:1px solid var(--line-l);background:rgba(247,243,235,.045);text-align:center}
+.cd b{display:block;font:400 clamp(30px,8.6vw,46px)/1 var(--serif);letter-spacing:-.01em;color:var(--ivory);font-variant-numeric:tabular-nums lining-nums}
+.cd span{display:block;margin-top:8px;font:500 10.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--gold-l)}
+.events{display:grid;gap:clamp(16px,2.4vw,24px);width:100%;max-width:560px}
+.evc{position:relative;display:grid;justify-items:center;padding:clamp(34px,5vw,44px) 24px clamp(30px,4vw,38px);border:1px solid rgba(216,190,154,.34);background:rgba(247,243,235,.045);text-align:center}
+.evc::before,.evc::after{content:"";position:absolute;width:18px;height:18px;border:1px solid var(--gold-l);pointer-events:none}
+.evc::before{left:-1px;top:-1px;border-right:0;border-bottom:0}.evc::after{right:-1px;bottom:-1px;border-left:0;border-top:0}
+.evc-ic{display:grid;place-items:center;width:64px;height:64px;margin-bottom:14px;border:1px solid rgba(216,190,154,.5);border-radius:50%;color:var(--gold-l)}
+.evc-ic svg{width:32px;height:32px;display:block}
+.evc-b{display:grid;justify-items:inherit;min-width:0}
+.bg-wine .evc-k{font:italic 400 clamp(32px,8.4vw,44px)/1.05 var(--serif);color:var(--gold-l)}
+.evc-t{margin-top:10px;font:400 clamp(30px,8vw,40px)/1.1 var(--serif);color:var(--ivory)}
+.evc-t small{display:block;margin-bottom:6px;font:500 10.5px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:rgba(247,243,235,.72)}
+.evc-m{display:grid;gap:2px;width:min(100%,280px);margin-top:18px;padding-top:16px;border-top:1px solid var(--line-l);font-size:15px;line-height:1.55;color:rgba(247,243,235,.8)}
+.evc-m b{font-weight:500;color:var(--ivory)}
+.evc-a{justify-self:inherit;margin-top:20px;padding-bottom:4px;border-bottom:1px solid var(--gold-l);font:500 11.5px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-l);text-decoration:none;transition:color .3s,border-color .3s}
+.evc-a::after{content:"\2192";display:inline-block;margin-left:10px;transition:transform .4s var(--ease)}
+.evc-a:hover,.evc-a:focus-visible{color:var(--ivory);border-color:var(--ivory)}.evc-a:hover::after,.evc-a:focus-visible::after{transform:translateX(6px)}
+@media(min-width:1000px){
+ .ac{grid-template-columns:minmax(0,5fr) minmax(0,6fr);column-gap:clamp(56px,7vw,110px);align-items:center;justify-items:stretch}
+ .medal{--md:min(100%,440px)}.md-n{font-size:clamp(150px,15vw,214px)}.md-b{font-size:30px}.md-h{font-size:13px}
+ .cd{max-width:440px}
+ .events{max-width:none}
+ .evc{grid-template-columns:auto minmax(0,1fr);align-items:center;column-gap:clamp(28px,3vw,40px);justify-items:start;padding:44px clamp(32px,3.4vw,48px);text-align:left}
+ .evc-ic{width:88px;height:88px;margin:0}.evc-ic svg{width:42px;height:42px}
+ .evc-b{justify-items:start}.evc-m{width:auto;max-width:300px}
+}
+
+/* ---------- lokasi: peta berbingkai, kartu informasi menimpa peta ---------- */
+#lokasi{padding-block:clamp(84px,12vw,160px)}
+.loc{display:grid}
+.loc-m{position:relative}
+.loc-m::before{content:"";position:absolute;z-index:0;left:-10px;top:-10px;right:10px;bottom:10px;border:1px solid var(--gold);pointer-events:none}
+.vm{position:relative;z-index:1;aspect-ratio:1/1;background:var(--champagne) var(--paper);overflow:hidden}
+.vm-ill{position:absolute;inset:0}.vm-ill>svg{display:block;width:100%;height:100%}
+.vm-pin{position:absolute;left:50%;top:46%;display:grid;place-items:center;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:var(--wine);color:var(--gold-l)}
+.vm-pin::after{content:"";position:absolute;inset:-9px;border:1px solid var(--wine);border-radius:50%;opacity:0;animation:ping 2.6s ease-out infinite}
+@keyframes ping{0%{transform:scale(.7);opacity:.7}100%{transform:scale(1.5);opacity:0}}
+.vm iframe{position:absolute;inset:0;z-index:1;width:100%;height:100%;border:0;filter:grayscale(.35) sepia(.2) contrast(.98)}
+.loc-i{position:relative;z-index:2;margin:-56px 14px 0;padding:0 24px 30px;background:#FCFAF5 var(--paper);border:1px solid var(--line);box-shadow:0 28px 50px -32px rgba(84,43,53,.5);text-align:center}
+.pin{display:grid;place-items:center;width:56px;height:56px;margin:-28px auto 18px;border-radius:50%;background:var(--wine);color:var(--gold-l);box-shadow:0 0 0 6px #FCFAF5}
+.pin svg{display:block;width:24px;height:24px}
+.loc-i .label{justify-content:center}
+.loc-i h2{margin:14px 0 12px;font:400 clamp(38px,11vw,50px)/1 var(--serif);letter-spacing:-.014em;color:var(--wine)}
+.addr{max-width:24em;margin-inline:auto;font:italic 400 clamp(18px,4.6vw,20px)/1.5 var(--serif);color:var(--muted)}
+.sched{position:relative;margin:26px 0 0;padding:0}
+.sched::before,.sched div::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--line);transform-origin:left;transform:scaleX(var(--ln,1));pointer-events:none}
+.sched div{position:relative;display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0}
+.sched div::after{top:auto;bottom:0}
+.sched dt{font:500 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-t)}.sched dd{margin:0;font:400 clamp(19px,2.2vw,22px) var(--serif);color:var(--wine);text-align:right}
+.vb{display:grid;gap:10px;margin-top:26px}
+.vb .btn{width:100%}
+@media(min-width:900px){
+ .loc{grid-template-columns:repeat(12,minmax(0,1fr));align-items:center}
+ .loc-m{grid-column:1/10;grid-row:1}
+ .loc-m::before{left:-16px;top:-16px;right:16px;bottom:16px}
+ .vm{aspect-ratio:auto;height:min(74svh,660px)}
+ .loc-i{grid-column:8/13;grid-row:1;margin:0;padding:44px clamp(28px,3vw,44px) 40px;text-align:left}
+ .pin{margin:0 0 24px;box-shadow:none}
+ .loc-i .label{justify-content:flex-start}
+ .loc-i h2{font-size:clamp(46px,4.6vw,62px)}
+ .addr{margin-inline:0}
+}
+
+/* ---------- galeri: kolase, ukuran dan jarak berbeda ---------- */
+#galeri{padding-block:clamp(96px,14vw,180px)}
+.jr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(36px,6vw,56px) 12px;align-items:start}
+.gi{display:flex;flex-direction:column;gap:14px;min-width:0;padding:0;border:0;background:none;color:var(--ivory);font:inherit;text-align:left;cursor:zoom-in}
+.gm{display:block;aspect-ratio:var(--ar,4/5);background:var(--wine)}
+.gm>*{transition:transform 1.4s var(--ease)}
+.gc{display:flex;align-items:baseline;gap:14px;font:italic 400 clamp(18px,2vw,21px)/1.2 var(--serif)}
+.gc i{font:500 11px var(--sans);font-style:normal;letter-spacing:.2em;color:var(--gold-l)}
+.gi:nth-child(1){grid-column:1/3;--ar:4/3}.gi:nth-child(2){--ar:4/5}.gi:nth-child(3){--ar:4/5;margin-top:44px}
+.gi:nth-child(4){grid-column:1/3;--ar:16/10}.gi:nth-child(5){--ar:1/1}.gi:nth-child(6){--ar:3/4;margin-top:36px}.gi:nth-child(7){grid-column:1/3;--ar:5/4}
+.gi:focus-visible{outline:2px solid var(--gold-l);outline-offset:6px}
+@media(hover:hover){.gi:hover .gm>*{transform:scale(1.04)}}
+@media(min-width:860px){.jr{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(16px,2.4vw,32px);row-gap:clamp(56px,8vw,112px)}
+ .gi:nth-child(1){grid-column:1/8;--ar:4/3}.gi:nth-child(2){grid-column:9/13;--ar:3/4;margin-top:clamp(90px,13vw,200px)}
+ .gi:nth-child(3){grid-column:2/6;--ar:4/5;margin-top:0}.gi:nth-child(4){grid-column:7/13;--ar:5/4;margin-top:clamp(40px,7vw,110px)}
+ .gi:nth-child(5){grid-column:1/5;--ar:3/4}.gi:nth-child(6){grid-column:6/9;--ar:1/1;margin-top:clamp(70px,10vw,150px)}.gi:nth-child(7){grid-column:10/13;--ar:4/5}}
+
+/* ---------- lightbox ---------- */
+body.lbo{overflow:hidden}
+html.gs #lb,html.gs .lb-s{transition:none}
+#lb{position:fixed;inset:0;z-index:200;display:grid;place-items:center;background:rgba(46,22,32,.96);opacity:0;visibility:hidden;transition:opacity .35s,visibility 0s .35s;touch-action:pan-y}
+#lb.on{opacity:1;visibility:visible;transition:opacity .35s}
+.lb-s{width:min(92vw,1000px);height:min(72vh,720px);transition:opacity .3s}.lb-s img,.lb-s svg{width:100%;height:100%;object-fit:contain;display:block}.lb-s .pl{width:100%;height:100%;background:var(--pl)}
+.lb-x,.lb-n{position:absolute;z-index:2;width:44px;height:44px;border:1px solid rgba(247,243,235,.4);border-radius:50%;background:transparent;color:var(--ivory);font-size:22px;line-height:1;cursor:pointer;transition:background .3s}
+.lb-x:hover,.lb-n:hover{background:rgba(247,243,235,.12)}
+.lb-x{top:calc(14px + env(safe-area-inset-top,0px));right:14px}.lb-n{top:50%;translate:0 -50%}.lb-n.p{left:10px}.lb-n.n{right:10px}
+.lb-c{position:absolute;left:0;right:0;bottom:calc(22px + env(safe-area-inset-bottom,0px));text-align:center;color:var(--ivory);font:500 12px var(--sans);letter-spacing:.16em;text-transform:uppercase}.lb-c b{display:block;margin-bottom:6px;font:italic 400 20px var(--serif);letter-spacing:0;text-transform:none}.lb-c span{opacity:.7}
+
+/* ---------- rsvp & ucapan: formulir bergaris, ucapan sebagai daftar ---------- */
+#rsvp{padding-block:clamp(96px,14vw,180px)}
+.rs{display:grid;gap:clamp(48px,7vw,72px)}
+.rs-h{margin:0}
+form{display:grid;gap:clamp(30px,4vw,40px);text-align:left}
+.fld{position:relative;display:grid;gap:4px}.row2{display:grid;gap:clamp(30px,4vw,40px)}
+label{font:500 11.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--gold-t)}
+.fld::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--wine);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease);pointer-events:none}.fld:focus-within::after{transform:scaleX(1)}
+input,select,textarea{font-variant-numeric:lining-nums;width:100%;min-height:54px;padding:8px 0 10px;border:0;border-bottom:1px solid rgba(84,43,53,.34);border-radius:0;background:transparent;color:var(--wine);font:400 clamp(21px,2.4vw,26px)/1.4 var(--serif);transition:border-color .3s}
+textarea{min-height:104px;resize:vertical}
+select{appearance:none;-webkit-appearance:none;padding-right:28px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' fill='none' stroke='%23542B35' stroke-width='1.4'%3E%3Cpath d='M1 1.5l6 6 6-6'/%3E%3C/svg%3E") right 2px center no-repeat}
+input:hover,select:hover,textarea:hover{border-bottom-color:rgba(84,43,53,.65)}
+input:focus,select:focus,textarea:focus{outline:none}
+::placeholder{font-style:italic;color:#8A777A;opacity:1}
+form .btn{justify-self:start;margin-top:4px}
+#ok{margin:0;font:italic 400 19px var(--serif);color:var(--wine)}#ok:empty{display:none}
+@media(min-width:560px){.row2{grid-template-columns:3fr 2fr;column-gap:32px}}
+#wishes{margin-top:clamp(64px,9vw,104px)}
+.wish{padding:26px 0;border-top:1px solid var(--line);text-align:left}
+.wish:last-child{border-bottom:1px solid var(--line)}
+.wish .wh{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 16px;margin-bottom:8px}
+.wish b{font:500 clamp(24px,3vw,30px)/1.15 var(--serif);color:var(--wine)}.wish small{font:500 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-t)}
+.wish p{max-width:34em;font-size:17px;line-height:1.75;color:var(--ink)}
+.wish.new{animation:rise .7s var(--ease)}
+@media(min-width:900px){.rs{grid-template-columns:5fr 7fr;column-gap:clamp(56px,8vw,130px);align-items:start}.rs-h{position:sticky;top:clamp(96px,17vh,170px)}}
+
+/* ---------- penutup: akhir yang tenang ---------- */
+footer.ft{position:relative;overflow:hidden;display:grid;align-content:center;min-height:min(100svh,900px);padding:clamp(96px,16vw,170px) var(--gut) calc(clamp(80px,12vw,130px) + 56px + env(safe-area-inset-bottom,0px))}
+.ft-bg{position:absolute;inset:0;pointer-events:none}
+.ft-bg svg{position:absolute;left:50%;bottom:0;width:max(100%,900px);height:auto;translate:-50% 0;fill:none;stroke:var(--ivory);stroke-opacity:.14;stroke-width:1.4}
+.ft-bg .fl{fill:var(--ivory);fill-opacity:.07;stroke:none}
+.ft-c{position:relative;z-index:1}
+.ft-h{max-width:20em;margin-inline:auto;font:italic 400 clamp(22px,4.6vw,30px)/1.3 var(--serif);color:var(--gold-l)}
+.ft-n{display:flex;flex-direction:column;align-items:center;margin:clamp(18px,3.4vw,34px) 0 0;font:400 clamp(84px,27vw,230px)/.88 var(--serif);letter-spacing:-.02em;color:var(--ivory)}
+.ft-a,.ft-n i{display:block;white-space:nowrap;overflow:hidden;padding:.06em .1em .2em;margin:-.06em -.1em -.2em}
+.ft-n i{font-size:.3em;color:var(--gold-l);padding-block:.1em .22em}
+.ft-d{margin-top:clamp(28px,4.4vw,44px);font:500 12px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-l)}
+.wm{max-width:640px;margin:clamp(48px,8vw,80px) auto 0;padding-top:22px;border-top:1px solid var(--line-l);font:500 12px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:rgba(247,243,235,.72)}
+@media(min-width:900px){.ft-n{flex-direction:row;justify-content:center;align-items:baseline;gap:.14em;font-size:clamp(120px,15vw,210px)}.ft-n i{font-size:.34em}}
+
+/* ---------- gerak: halus & bertujuan ---------- */
+.jsr .rev{opacity:0;transform:translate3d(0,18px,0);transition:opacity .9s var(--ease) var(--d,0s),transform .9s var(--ease) var(--d,0s)}
+.jsr .rev.on{opacity:1;transform:none}
+@keyframes rise{from{opacity:0;transform:translate3d(0,18px,0)}}
+@keyframes fade{from{opacity:0}}
+@keyframes zin{from{transform:scale(1.04)}}
+@media(max-width:380px){nav a{padding:10px 9px;font-size:12px}}
+@media(prefers-reduced-motion:reduce){.bd{display:none}*{animation:none!important;scroll-behavior:auto!important}.jsr .rev{opacity:1!important;transform:none!important;transition:none!important}#cover,.gm,#lb,.lb-s{transition:none!important}}
+</style>
+</head>
+<body class="lock">
+<a class="skip" href="#konten">Lewati ke konten utama</a>
+
+<div id="veil" aria-hidden="true"></div>
+<div id="cover" role="dialog" aria-modal="true" aria-label="Pembuka undangan">
+  <div class="cv-in">
+    <div class="cv-g"><p class="cv-k">Kepada Yth.</p><p class="cv-name" id="tamu"></p><p class="cv-sub">Kami mengundang Anda ke hari bahagia kami</p></div>
+    <div class="env-wrap"><div class="env">
+      <div class="env-sh" aria-hidden="true"></div>
+      <div class="env-bk" aria-hidden="true"></div>
+      <div class="env-card"><div class="card-in"><p class="cd-e">The Wedding of</p><h2 class="cd-n"><span data-k="wanita"></span><i>&amp;</i><span data-k="pria"></span></h2><p class="cd-d" data-k="tglPanjang"></p></div></div>
+      <svg class="env-fr" viewBox="0 0 400 272" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="pf1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EFE6D6"/><stop offset="1" stop-color="#E3D7C2"/></linearGradient></defs><path d="M0 0L200 148L400 0V272H0Z" fill="url(#pf1)"/><path d="M0 272L200 148L400 272" fill="none" stroke="#C9B89C" stroke-width="1" opacity=".75"/><path d="M0 0L200 148L400 0" fill="none" stroke="#C9B89C" stroke-width="1" opacity=".8"/></svg>
+      <div class="env-flap" aria-hidden="true">
+        <div class="fl-f"><svg viewBox="0 0 400 148" preserveAspectRatio="none"><defs><linearGradient id="ff1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3EBDC"/><stop offset="1" stop-color="#E8DCC8"/></linearGradient></defs><path d="M0 0H400L200 148Z" fill="url(#ff1)" stroke="#C9B89C" stroke-width="1"/></svg><span class="seal" id="seal"></span></div>
+        <div class="fl-b"><svg viewBox="0 0 400 148" preserveAspectRatio="none"><defs><linearGradient id="fb1" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#CDBEA4"/><stop offset="1" stop-color="#D9CCB4"/></linearGradient></defs><path d="M0 0H400L200 148Z" fill="url(#fb1)" stroke="#C0AF92" stroke-width="1"/></svg></div>
+      </div>
+    </div></div>
+    <button class="btn cv-b" id="buka"><span>Buka Undangan</span><i aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></button>
+  </div>
+</div>
+
+<button id="mus" type="button" aria-label="Putar musik latar" aria-pressed="false">♪</button>
+<audio id="bgm" loop></audio>
+<div id="lb" role="dialog" aria-modal="true" aria-label="Galeri foto">
+  <button class="lb-x" aria-label="Tutup">&#10005;</button>
+  <button class="lb-n p" aria-label="Foto sebelumnya">&#8249;</button>
+  <div class="lb-s" id="lbS"></div>
+  <button class="lb-n n" aria-label="Foto berikutnya">&#8250;</button>
+  <div class="lb-c"><b id="lbT"></b><span id="lbN"></span></div>
+</div>
+<nav aria-label="Navigasi utama"><a href="#top">Awal</a><a href="#mempelai">Mempelai</a><a href="#acara">Acara</a><a href="#galeri">Galeri</a><a href="#rsvp">RSVP</a></nav>
+
+<header class="hero" id="top">
+  <div class="ly l-sky" data-l><div class="sun"></div></div>
+  <div class="dawn"></div>
+  <div class="fx" aria-hidden="true"><svg class="cl c1" viewBox="0 0 200 60" aria-hidden="true"><path d="M20 50a20 20 0 0 1 8-37 28 28 0 0 1 52-6 24 24 0 0 1 40 10 22 22 0 0 1 30 4 20 20 0 0 1 28 29z"/></svg><svg class="cl c2" viewBox="0 0 200 60" aria-hidden="true"><path d="M20 50a20 20 0 0 1 8-37 28 28 0 0 1 52-6 24 24 0 0 1 40 10 22 22 0 0 1 30 4 20 20 0 0 1 28 29z"/></svg><svg class="cl c3" viewBox="0 0 200 60" aria-hidden="true"><path d="M20 50a20 20 0 0 1 8-37 28 28 0 0 1 52-6 24 24 0 0 1 40 10 22 22 0 0 1 30 4 20 20 0 0 1 28 29z"/></svg></div>
+  <div class="ly l-city" data-l><svg viewBox="0 0 1200 380" aria-hidden="true">
+    <defs><linearGradient id="mist" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4cf94" stop-opacity="0"/><stop offset="1" stop-color="#f4cf94" stop-opacity=".6"/></linearGradient></defs>
+    <g id="sky-line" fill="#6A3846" opacity=".7"><path d="M90 300v-52a30 30 0 0 1 60 0v52z"/><rect x="117" y="206" width="6" height="22"/></g>
+    <rect y="250" width="1200" height="130" fill="url(#mist)"/>
+    <g transform="translate(241 -168) scale(1.9)">
+      <g class="cab" fill="none" stroke="#2E1620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="m14.54 244.02c74.2-25.97 78.7-104.42 83.67-134.22"/><path pathLength="1" d="m366.61 244.02c-74.2-25.97-78.7-104.42-83.67-134.22"/><path pathLength="1" d="m100.58 102.72c12.68 44.02 57.72 56.17 91.25 56.17 39.09 0 74.58-16.37 87.55-56.17"/><path pathLength="1" d="m100.58 102.72c12.68 25.06 57.72 31.98 91.25 31.98 39.09 0 74.58-9.32 87.55-31.98"/></g>
+      <g class="tw tw1"><rect fill="#3B1D27" x="75.33" y="95.68" width="56.51" height="3.93"/><rect fill="#2E1620" x="84.28" y="99.61" width="36.22" height="3.05"/><path fill="#3B1D27" d="m84.28 246.67v-125.89h30.55v125.89h11.78v-144h-47.35v144h5.02z"/><rect fill="#2E1620" x="84.28" y="120.78" width="11.05" height="125.89"/><rect fill="#6B3A48" x="84.28" y="205.72" width="30.55" height="8"/><rect fill="#6B3A48" x="84.28" y="154.38" width="30.55" height="8.58"/><rect fill="#3B1D27" x="84.28" y="127.32" width="30.55" height="10.18"/></g>
+      <g class="tw tw2"><rect fill="#3B1D27" x="245.92" y="95.9" width="56.51" height="3.93"/><rect fill="#2E1620" x="254.87" y="99.83" width="36.22" height="3.05"/><path fill="#3B1D27" d="m254.87 246.88v-125.89h30.55v125.89h11.78v-144h-47.35v144h5.02z"/><rect fill="#2E1620" x="254.87" y="120.99" width="11.05" height="125.89"/><rect fill="#6B3A48" x="254.87" y="205.94" width="30.55" height="8"/><rect fill="#6B3A48" x="254.87" y="154.59" width="30.55" height="8.58"/><rect fill="#3B1D27" x="254.87" y="127.54" width="30.55" height="10.18"/></g>
+      <g class="dk"><rect fill="#6B3A48" x="11.61" y="242.25" width="356.75" height="3.53"/>
+<path fill="#2E1620" d="m368.36,245.82v8.4c-32.89,0-61.84,3.52-78.65,8.87h-25.82c-19.92-5.37-44.12-8.64-73.45-8.64s-52.12,3.17-72.04,8.54l-29.06.09c-16.87-5.2-45.39-8.62-77.73-8.64v-8.64h356.75Z"/>
+<rect fill="#6B3A48" x="-130" y="242.25" width="141.7" height="3.53"/><rect fill="#6B3A48" x="368.36" y="242.25" width="142" height="3.53"/><rect fill="#2E1620" x="-130" y="245.82" width="141.7" height="8.4"/><rect fill="#2E1620" x="368.36" y="245.82" width="142" height="8.4"/></g>
+      <g class="pf"><rect fill="#4A2832" x="67.3" y="262.24" width="72.57" height="5.87"/><polygon fill="#5E3744" points="127.53 282.29 79.64 282.29 67.3 268.11 139.87 268.11"/><rect fill="#4A2832" x="241.12" y="262.24" width="72.57" height="5.87"/><polygon fill="#5E3744" points="301.36 282.29 253.46 282.29 241.12 268.11 313.7 268.11"/></g>
+      <g id="lamps"></g>
+    </g>
+  </svg></div>
+  <div class="fx" aria-hidden="true"><svg class="bd" style="top:38%;width:36px;--y0:0px;--y1:-70px;--bd:0.6s" viewBox="0 0 30 14" aria-hidden="true"><path d="M1 12Q8 0 15 8Q22 0 29 12"/></svg><svg class="bd" style="top:44%;width:27px;--y0:20px;--y1:-40px;--bd:0.9s" viewBox="0 0 30 14" aria-hidden="true"><path d="M1 12Q8 0 15 8Q22 0 29 12"/></svg><svg class="bd" style="top:32%;width:30px;--y0:-10px;--y1:-80px;--bd:1.15s" viewBox="0 0 30 14" aria-hidden="true"><path d="M1 12Q8 0 15 8Q22 0 29 12"/></svg><svg class="bd" style="top:48%;width:22px;--y0:10px;--y1:-50px;--bd:1.5s" viewBox="0 0 30 14" aria-hidden="true"><path d="M1 12Q8 0 15 8Q22 0 29 12"/></svg><svg class="bd" style="top:40%;width:25px;--y0:0px;--y1:-60px;--bd:1.8s" viewBox="0 0 30 14" aria-hidden="true"><path d="M1 12Q8 0 15 8Q22 0 29 12"/></svg></div>
+  <div class="ly l-river" data-l><svg viewBox="0 0 1200 220" aria-hidden="true">
+    <defs><linearGradient id="rv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D9A98A"/><stop offset=".4" stop-color="#8A5565"/><stop offset="1" stop-color="#3A1D27"/></linearGradient></defs>
+    <rect width="1200" height="220" fill="url(#rv)"/>
+    <g fill="#FFE7BD" id="shim"></g>
+    <g transform="translate(250 60)"><g class="bt"><path d="M0 30h110l-13 15H14z" fill="#2A1219"/><rect x="38" y="8" width="40" height="22" fill="#5E3144"/><path d="M32 8h52l-11-11H43z" fill="#3A1D27"/></g></g>
+  </svg></div>
+  <div class="shade"></div>
+  <div class="hero-txt">
+    <p class="hero-eyebrow">The Wedding of</p>
+    <h1><span data-k="wanita"></span><i>&amp;</i><span data-k="pria"></span></h1>
+    <p class="dt" data-k="tglPanjang"></p>
+  </div>
+  <div class="fade"></div><div class="hint">Gulir</div>
+</header>
+
+<main id="konten" tabindex="-1">
+
+<section id="pembuka">
+  <div class="wrap open">
+    <p class="label rev">Bismillahirrahmanirrahim</p>
+    <div class="open-b">
+      <p class="lead rev"><em>Assalamu’alaikum Warahmatullahi Wabarakatuh.</em> Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada hari bahagia kami.</p>
+      <blockquote class="quote rev"><p>“Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.”</p><cite>QS. Ar-Rum: 21</cite></blockquote>
+      <a class="link rev" href="#acara">Lihat detail acara</a>
+    </div>
+  </div>
+</section>
+
+<section id="mempelai">
+  <div class="wrap">
+    <header class="sec-h rev"><p class="label">Mempelai</p><h2>Dua Hati, Satu Muara</h2></header>
+    <div class="duo">
+      <article class="pc pc--a rev"><div class="ph" data-ph="wanita"></div><div class="pi"><p class="role">Mempelai Wanita</p><h3 data-k="wanitaLengkap"></h3><p class="par" data-k="ortuWanita"></p></div></article>
+      <article class="pc pc--b rev"><div class="ph" data-ph="pria"></div><div class="pi"><p class="role">Mempelai Pria</p><h3 data-k="priaLengkap"></h3><p class="par" data-k="ortuPria"></p></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="kisah" class="bg-champ">
+  <div class="wrap">
+    <header class="sec-h sec-h--row rev"><div><p class="label">Perjalanan Kami</p><h2>Kisah Kami</h2></div><p class="sub">Empat bab kecil yang membawa kami sampai di sini.</p></header>
+    <figure class="story-ph rev" data-ph="kisah"></figure>
+    <div class="story">
+      <aside class="rail" aria-hidden="true"><div class="rail-in"><p class="rail-k">Bab <span id="rk">I</span> dari IV</p><div class="rail-y"><span>2019</span><span>2022</span><span>2026</span><span>2027</span></div></div></aside>
+      <div class="chs">
+        <article class="ch">
+          <div class="ch-tx rev"><p class="ch-no">Bab I &middot; 2019</p><h3>Bertemu</h3><p>Senja di tepian Sungai Musi, festival Bidar sedang ramai. Dua orang asing berbagi meja, secangkir kopi, dan obrolan yang tak terasa berjam-jam.</p><p class="ch-q">Kadang, takdir datang sambil membawa kopi.</p></div>
+        </article>
+        <article class="ch">
+          <div class="ch-tx rev"><p class="ch-no">Bab II &middot; 2022</p><h3>Menjalin Janji</h3><p>Jarak dan waktu sempat jadi penguji. Namun setiap doa yang dikirim lewat malam yang panjang justru membuat kami saling menguatkan dan tumbuh bersama.</p><p class="ch-q">Jauh di mata, dekat di doa.</p></div>
+        </article>
+        <article class="ch">
+          <div class="ch-tx rev"><p class="ch-no">Bab III &middot; 2026</p><h3>Lamaran</h3><p>Di Rumah Limas yang hangat, dua keluarga akhirnya duduk bersama. Tawa, haru, dan restu mengalir, menyatukan dua keluarga menjadi satu.</p><p class="ch-q">Restu orang tua adalah pintu pertama.</p></div>
+        </article>
+        <article class="ch">
+          <div class="ch-tx rev"><p class="ch-no">Bab IV &middot; 2027</p><h3>Hari Bahagia</h3><p>Setelah semua perjalanan itu, kami siap melangkah ke jenjang pernikahan. Dan kami ingin Anda ada di sana, berbagi bahagia di hari yang paling kami nantikan.</p><p class="ch-q">Bab baru kami dimulai, hadirlah menjadi bagiannya.</p></div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="acara" class="bg-wine">
+  <div class="band" aria-hidden="true"></div>
+  <div class="wrap">
+    <header class="sec-h sec-h--c rev"><p class="label">Save the Date</p><h2>Detail Acara</h2></header>
+    <div class="ac">
+      <div class="ac-l">
+        <div class="medal rev" role="group" aria-label="Tanggal acara"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span class="md-h" data-k="hari"></span><b class="md-n" data-k="tgl"></b><span class="md-b" data-k="blnThn"></span></div>
+        <div class="cd rev" id="cd" role="timer" aria-label="Hitung mundur menuju acara"><div><b>0</b><span>Hari</span></div><div><b>0</b><span>Jam</span></div><div><b>0</b><span>Menit</span></div><div><b>0</b><span>Detik</span></div></div>
+      </div>
+      <div class="events">
+        <article class="evc rev"><div class="evc-ic" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="20" r="7"/><circle cx="20" cy="20" r="7"/><path d="M16 3.5l2.4 3.3L16 10l-2.4-3.2z"/></svg></div><div class="evc-b"><h3 class="evc-k">Akad Nikah</h3><p class="evc-t"><small>Pukul</small><span data-k="jamAkad"></span></p><p class="evc-m"><span data-k="tglPanjang"></span><b data-k="venue"></b></p><a class="evc-a" href="#lokasi">Lihat lokasi</a></div></article>
+        <article class="evc rev"><div class="evc-ic" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h10l-.8 6.5a4.2 4.2 0 0 1-8.4 0z"/><path d="M8 16.7V26M4.5 26h7"/><path d="M19 6h10l-.8 6.5a4.2 4.2 0 0 1-8.4 0z"/><path d="M24 16.7V26M20.5 26h7"/></svg></div><div class="evc-b"><h3 class="evc-k">Resepsi</h3><p class="evc-t"><small>Pukul</small><span data-k="jamResepsi"></span></p><p class="evc-m"><span data-k="tglPanjang"></span><b data-k="venue"></b></p><a class="evc-a" href="#lokasi">Lihat lokasi</a></div></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="lokasi">
+  <div class="wrap loc">
+    <div class="loc-m rev"><div class="vm" id="vm"></div></div>
+    <div class="loc-i rev">
+      <span class="pin" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l9.5 9.5-9.5 9.5L2.5 12z"/><path d="M8.5 13.5L12 7l3.5 6.5-3.5-1.8z"/></svg></span>
+      <p class="label">Lokasi Acara</p>
+      <h2 id="vnama"></h2>
+      <p class="addr" id="valamat"></p>
+      <dl class="sched"><div><dt>Tanggal</dt><dd data-k="tglS"></dd></div><div><dt>Akad Nikah</dt><dd data-k="jamAkad"></dd></div><div><dt>Resepsi</dt><dd data-k="jamResepsi"></dd></div></dl>
+      <div class="vb"><a class="btn" id="maps" target="_blank" rel="noopener noreferrer">Buka Petunjuk Arah<span class="sr"> (membuka Google Maps di tab baru)</span></a><a class="btn o" id="gcal" target="_blank" rel="noopener noreferrer">Simpan Tanggal<span class="sr"> (membuka Google Calendar di tab baru)</span></a></div>
+    </div>
+  </div>
+</section>
+
+<section id="galeri" class="bg-dark">
+  <div class="wrap">
+    <header class="sec-h sec-h--row rev"><div><p class="label">Galeri</p><h2>Momen Kami</h2></div><p class="sub">Potongan cerita yang kami simpan dengan sepenuh hati.</p></header>
+    <div class="jr" id="jr"></div>
+  </div>
+</section>
+
+<section id="rsvp">
+  <div class="wrap rs">
+    <header class="sec-h rs-h rev"><p class="label">RSVP</p><h2>Konfirmasi &amp; Doa</h2></header>
+    <div class="rs-b">
+      <form id="f" class="rev" aria-label="Formulir konfirmasi kehadiran">
+        <div class="fld"><label for="f-n">Nama lengkap</label><input id="f-n" name="n" autocomplete="name" required maxlength="60"></div>
+        <div class="row2">
+          <div class="fld"><label for="f-s">Konfirmasi kehadiran</label><select id="f-s" name="s"><option>Hadir</option><option>Tidak Hadir</option><option>Masih Ragu</option></select></div>
+          <div class="fld"><label for="f-j">Jumlah tamu</label><input id="f-j" name="j" type="number" min="1" max="10" value="1"></div>
+        </div>
+        <div class="fld"><label for="f-m">Ucapan &amp; doa</label><textarea id="f-m" name="m" rows="3" placeholder="Tulis ucapan &amp; doa…" maxlength="300" required></textarea></div>
+        <button class="btn" type="submit">Kirim</button>
+        <p id="ok" role="status" aria-live="polite"></p>
+      </form>
+      <div id="wishes" class="rev" role="region" aria-label="Daftar ucapan"></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="bg-wine ft">
+  <div class="ft-bg" aria-hidden="true"><svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax meet"><g class="fl"><rect x="428" y="70" width="10" height="184"/><rect x="462" y="70" width="10" height="184"/><rect x="728" y="70" width="10" height="184"/><rect x="762" y="70" width="10" height="184"/><rect x="420" y="62" width="60" height="10"/><rect x="720" y="62" width="60" height="10"/></g><path d="M0 252H1200M450 66C380 150 190 222 0 246M750 66C820 150 1010 222 1200 246M450 66Q600 150 750 66"/><path d="M60 276h140M300 288h200M640 280h180M900 290h170" stroke-opacity=".1"/></svg></div>
+  <div class="wrap center ft-c">
+    <p class="ft-h">Terima kasih atas doa &amp; restu Anda.</p>
+    <h2 class="ft-n"><span class="ft-a" data-k="wanita"></span><i>&amp;</i><span class="ft-a" data-k="pria"></span></h2>
+    <p class="ft-d" data-k="tglPanjang"></p>
+    <p class="wm">Benang Merah Living Journal</p>
+  </div>
+</footer>
+
+<script>
+/* ====== KONFIGURASI — UBAH DI SINI ====== */
+const C={
+ wanita:'Ayu', pria:'Arya',
+ wanitaLengkap:'Nyimas Ayu Safira', priaLengkap:'Raden Arya Pratama',
+ ortuWanita:'Putri dari Bpk. Hasan & Ibu Marlina', ortuPria:'Putra dari Bpk. Rudi & Ibu Sari',
+ tanggal:'2027-02-13T09:00:00+07:00', akhir:'2027-02-13T14:00:00+07:00',
+ jamAkad:'09.00 WIB', jamResepsi:'11.00 – 14.00 WIB',
+ lokasi:'Jembatan Ampera, 9/10 Ulu, Kecamatan Seberang Ulu I, Kota Palembang, Sumatera Selatan',
+ mapsUrl:'https://maps.app.goo.gl/PBFphGZkbUQqxScNA', /* link Google Maps untuk tombol petunjuk arah */
+ embedPeta:true, /* true = tampilkan peta Google tersemat (butuh di-hosting sendiri; preview artifact memblokirnya) */
+ koordinat:'', /* opsional "lat,lng"; kosong = peta memakai teks lokasi */
+ venue:'Jembatan Ampera', alamat:'9/10 Ulu, Kecamatan Seberang Ulu I, Kota Palembang, Sumatera Selatan',
+ musik:'' /* isi URL file mp3 */,
+ foto:{wanita:'',pria:'',kisah:''}, /* URL foto mempelai 4:5; kisah = foto utama Kisah Kami, rasio 16:9 */
+ galeri:[ /* src = URL foto; kosongkan untuk ilustrasi bawaan */
+  {src:'',cap:'Our Moments',t:'ampera'},{src:'',cap:'The Beginning',t:'limas'},{src:'',cap:'The Promise',t:'rings'},
+  {src:'',cap:'Together',t:'songket'},{src:'',cap:'The Journey',t:'musi'},{src:'',cap:'Our Story',t:'ampera',v:1},{src:'',cap:'Forever',t:'rings',v:1}]
+};
+const dp=o=>new Date(C.tanggal).toLocaleDateString('id-ID',Object.assign({timeZone:'Asia/Jakarta'},o));
+C.tglPanjang=dp({weekday:'long',day:'numeric',month:'long',year:'numeric'});
+C.tglS=dp({day:'numeric',month:'short',year:'numeric'});C.hari=dp({weekday:'long'});C.tgl=dp({day:'numeric'});C.blnThn=dp({month:'long',year:'numeric'});
+document.querySelectorAll('[data-k]').forEach(e=>e.textContent=C[e.dataset.k]);
+const G=document.documentElement.classList.contains('gs'),rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(G)gsap.registerPlugin(ScrollTrigger);
+/* util teks: pecah kata / huruf berbungkus mask untuk reveal */
+const words=el=>{const t=el.textContent.trim();el.textContent='';t.split(/\s+/).forEach((w,i,a)=>{const m=document.createElement('span');m.className='w';const x=document.createElement('span');x.textContent=w;m.append(x);el.append(m);if(i<a.length-1)el.append(' ')});return el.querySelectorAll('.w>span')};
+const chars=el=>{el.querySelectorAll('[data-k],i').forEach(n=>{if(n.tagName==='I'){const c=document.createElement('span');c.className='c';c.innerHTML=n.innerHTML;n.replaceChildren(c);return}
+  const t=n.textContent;n.textContent='';[...t].forEach(ch=>{const c=document.createElement('span');c.className='c';c.textContent=ch;n.append(c)})});return el.querySelectorAll('.c')};
+const NS='http://www.w3.org/2000/svg',mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
+/* Siluet kota + lampu jembatan */
+const sl=document.getElementById('sky-line');
+for(let i=0;i<40;i++){if(i>9&&i<17||i>22&&i<30)continue;const h=30+(i*37)%80;sl.append(mk('rect',{x:i*30,y:300-h,width:26,height:h}))}
+const lp=document.getElementById('lamps');
+for(let i=0;i<46;i++)lp.append(mk('circle',{cx:-120+i*14,cy:238.6,r:1.1,fill:'#FBE6BE',opacity:.85}));
+/* Kilau air (statis) */
+const sh=document.getElementById('shim');
+for(let i=0;i<22;i++)sh.append(mk('rect',{x:(i*97)%1160,y:14+(i*53)%190,width:30+(i%4)*14,height:2,rx:1,opacity:.22}));
+for(let j=0;j<9;j++)sh.append(mk('rect',{x:566+(j%3)*10,y:6+j*18,width:70-j*5,height:3,rx:1.5,fill:'#F6DDB6',opacity:.4}));
+/* Musik */
+const bgm=document.getElementById('bgm'),mus=document.getElementById('mus');
+if(C.musik)bgm.src=C.musik;
+const setMus=on=>{mus.innerHTML=on?'<span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>':'♪';mus.classList.toggle('on',on);mus.setAttribute('aria-pressed',on);mus.setAttribute('aria-label',on?'Jeda musik latar':'Putar musik latar')};
+if(!C.musik){mus.setAttribute('aria-disabled','true');mus.title='Musik belum tersedia'}
+mus.onclick=()=>{if(!C.musik)return;bgm.paused?bgm.play().then(()=>setMus(true)).catch(()=>{}):(bgm.pause(),setMus(false))};
+/* Countdown, kalender, peta */
+const cd=document.querySelectorAll('#cd b');
+const tick=()=>{let d=Math.max(0,new Date(C.tanggal)-Date.now())/1e3;[86400,3600,60,1].forEach((u,i)=>{const v=Math.floor(d/u)+'';d%=u;if(cd[i].textContent!==v)cd[i].textContent=v})};tick();setInterval(tick,1e3);
+const z=s=>new Date(s).toISOString().replace(/[-:]|\.\d+/g,'');
+document.getElementById('gcal').href='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('Pernikahan '+C.wanita+' & '+C.pria)+'&dates='+z(C.tanggal)+'/'+z(C.akhir)+'&location='+encodeURIComponent(C.lokasi);
+const L=C.lokasi.split(','),qq=C.koordinat||C.lokasi;
+document.getElementById('vnama').textContent=C.venue||L[0].trim();
+document.getElementById('valamat').textContent=C.alamat||L.slice(1).join(',').trim()||C.lokasi;
+const mapsHref=C.mapsUrl||'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(qq);
+document.getElementById('maps').href=mapsHref;
+/* RSVP & ucapan (tersimpan di browser tamu) */
+const KEY='wish-palembang';let W=[{n:'Keluarga Besar',m:'Semoga sakinah, mawaddah, warahmah.',s:'Hadir'}];
+try{W=JSON.parse(localStorage.getItem(KEY))||W}catch(e){}
+const box=document.getElementById('wishes');
+const draw=()=>{box.replaceChildren(...W.map(w=>{const d=document.createElement('article');d.className='wish';const h=document.createElement('div');h.className='wh';const b=document.createElement('b');b.textContent=w.n;const s=document.createElement('small');s.textContent=w.s;h.append(b,s);const p=document.createElement('p');p.textContent=w.m;d.append(h,p);return d}))};draw();
+document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target);
+ W.unshift({n:f.get('n'),m:f.get('m'),s:f.get('s')});try{localStorage.setItem(KEY,JSON.stringify(W))}catch(x){}
+ draw();box.firstChild.classList.add('new');e.target.reset();document.getElementById('ok').textContent='Terima kasih, konfirmasi Anda tercatat.';
+ const sb=e.target.querySelector('.btn'),t0=sb.textContent;sb.textContent='Terkirim ✓';sb.disabled=true;setTimeout(()=>{sb.textContent=t0;sb.disabled=false},2200)});
+/* Cover pembuka: amplop 3D (GSAP), nama tamu dari ?to=Nama */
+const cv=document.getElementById('cover'),veil=document.getElementById('veil'),bk=document.getElementById('buka');
+document.getElementById('tamu').textContent=(new URLSearchParams(location.search).get('to')||'Bapak/Ibu/Saudara/i').slice(0,60);
+document.getElementById('seal').textContent=(C.wanita[0]||'')+'&'+(C.pria[0]||'');
+const others=[...document.body.children].filter(e=>e!==cv&&e!==veil&&!['SCRIPT','AUDIO'].includes(e.tagName));
+others.forEach(e=>e.inert=true);bk.focus({preventScroll:true});
+let intro=null;
+const heroNames=G?chars(document.querySelector('.hero-txt h1')):null;
+if(G){
+ const gn=words(document.getElementById('tamu')),cn=chars(document.querySelector('.cd-n'));
+ gsap.set('.env-flap',{transformPerspective:900});
+ gsap.set(['.cv-name','.cd-n'],{opacity:1});
+ if(rm){gsap.set(['.cv-k','.cv-sub','.env-wrap','.cv-b','.cd-e','.cd-d'],{opacity:1});gsap.set('.env-flap',{rotationX:-180,zIndex:1});gsap.set('.env-card',{yPercent:-74})}
+ else{
+  intro=gsap.timeline({defaults:{ease:'power3.out'}});
+  intro.fromTo('.cv-k',{opacity:0,y:10},{opacity:1,y:0,duration:.8},.1)
+   .fromTo(gn,{yPercent:118},{yPercent:0,duration:1,stagger:.08},.2)
+   .fromTo('.cv-sub',{opacity:0,y:8},{opacity:1,y:0,duration:.9},.55)
+   .fromTo('.env-wrap',{opacity:0,y:34},{opacity:1,y:0,duration:1.1},.6)
+   .to('.env-flap',{rotationX:-180,duration:.95,ease:'power2.inOut'},1.35)
+   .set('.env-flap',{zIndex:1},1.8)
+   .to('.env-card',{yPercent:-74,duration:1.15,ease:'power3.inOut'},1.85)
+   .fromTo('.cd-e',{opacity:0},{opacity:1,duration:.8},2.5)
+   .fromTo(cn,{yPercent:118},{yPercent:0,duration:1,stagger:.06},2.55)
+   .fromTo('.cd-d',{opacity:0,y:6},{opacity:1,y:0,duration:.8},3)
+   .fromTo('.cv-b',{opacity:0,y:14},{opacity:1,y:0,duration:.9},3.2)}
+}
+/* hero: nama muncul bertahap, dipanggil dari transisi masuk */
+const heroIntro=()=>{const t=gsap.timeline({defaults:{ease:'power3.out'}});
+ t.fromTo('.hero-eyebrow',{opacity:0,y:14},{opacity:1,y:0,duration:.9},0)
+  .fromTo(heroNames,{yPercent:118,opacity:1},{yPercent:0,duration:1.3,stagger:.07,ease:'expo.out'},.12)
+  .fromTo('.hero-txt .dt',{opacity:0,y:10},{opacity:1,y:0,duration:.9},.8);return t};
+let opened=false;
+bk.onclick=()=>{if(opened)return;opened=true;
+ if(intro&&intro.progress()<1)intro.progress(1);
+ others.forEach(e=>e.inert=false);scrollTo(0,0);
+ if(C.musik)bgm.play().then(()=>setMus(true)).catch(()=>{});
+ const b=document.body;b.classList.add('opened');cv.classList.add('go');
+ const done=()=>{cv.remove();veil.remove();b.classList.remove('lock');G&&ScrollTrigger.refresh();document.getElementById('konten').focus({preventScroll:true});dispatchEvent(new Event('scroll'))};
+ if(!G||rm){veil.remove();cv.style.transition='opacity .3s';cv.style.opacity=0;if(G)gsap.set(['.hero-eyebrow','.hero-txt .dt',heroNames],{opacity:1});setTimeout(done,rm?150:350);return}
+ gsap.set([cv,veil],{clipPath:'inset(0% 0% 0% 0%)'});
+ gsap.timeline()
+  .call(done,null,1.7)
+  .to('.cv-in',{opacity:0,y:-10,duration:.45,ease:'power2.in'},0)
+  .to(cv,{clipPath:'inset(100% 0% 0% 0%)',duration:1.3,ease:'expo.inOut'},.25)
+  .to(veil,{clipPath:'inset(100% 0% 0% 0%)',duration:1.3,ease:'expo.inOut'},.42)
+  .fromTo('.hero',{scale:1.1,transformOrigin:'50% 65%'},{scale:1,duration:2.4,ease:'power3.out'},.3)
+  .add(heroIntro(),1.45)};
+/* Navigasi aktif */
+const lk=[...document.querySelectorAll('nav a')],io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)lk.forEach(a=>a.classList.toggle('on',a.hash==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+lk.forEach(a=>{const t=document.querySelector(a.hash);t&&io.observe(t)});
+/* Foto & placeholder: bidang warna + tipografi (foto asli otomatis menggantikan) */
+document.documentElement.classList.add('jsr');
+const rmm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const TONE=['#E8DFD0','#C9A394','#6B3A48','#DCCDB8'],TC=['#542B35','#3F1F27','#D8BE9A','#542B35'];
+/* garis Jembatan Ampera (motif identitas Palembang), digambar dari parabola kabel */
+const ampera=()=>{let h='';for(let x=292;x<=508;x+=12){const t=(x-400)/134;h+=`<path d="M${x} ${(92+78*(1-t*t)).toFixed(1)}V238" opacity=".5"/>`}
+ return `<svg viewBox="0 0 800 300" preserveAspectRatio="xMidYMax slice" fill="none" stroke="#542B35" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><g opacity=".62"><path d="M0 238H800M0 246H800" opacity=".8"/><path d="M258 238V84h16v154M526 238V84h16v154M250 84h32M518 84h32"/><path d="M0 233C120 228 212 168 266 92M800 233C680 228 588 168 534 92M266 92Q400 248 534 92"/>${h}<path d="M110 268h120M300 280h200M570 266h130" opacity=".45"/></g></svg>`};
+const media=(src,alt,kind,i,x)=>src?`<img src="${src}" alt="${alt}" loading="lazy" decoding="async">`
+ :kind==='m'?`<div class="pl pl-m" aria-hidden="true" style="--pl:${i?'#542B35':'#E6D5C6'};--plc:${i?'#D8BE9A':'#542B35'}"><span>${x||''}</span></div>`
+ :kind==='k'?`<div class="pl pl-k" aria-hidden="true">${ampera()}</div>`
+ :`<div class="pl" aria-hidden="true" style="--pl:${TONE[i%4]};--plc:${TC[i%4]}"><span>${String(i+1).padStart(2,'0')}</span></div>`;
+/* peta: ilustrasi Ampera + pin sebagai dasar; peta Google tersemat menimpanya bila diaktifkan */
+{const vm=document.getElementById('vm');vm.innerHTML='<div class="vm-ill" aria-hidden="true">'+ampera()+'<span class="vm-pin"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span></div>';
+ if(C.embedPeta){const f=document.createElement('iframe');f.title='Peta lokasi acara di Google Maps';f.loading='lazy';f.referrerPolicy='no-referrer-when-downgrade';f.src='https://www.google.com/maps?q='+encodeURIComponent(qq)+'&z=16&hl=id&output=embed';vm.append(f)}}
+document.querySelector('[data-ph="kisah"]').innerHTML=media(C.foto.kisah,'Ayu & Arya','k',0);
+['wanita','pria'].forEach((k,i)=>{document.querySelector(`[data-ph="${k}"]`).innerHTML=media(C.foto[k],C[k+'Lengkap'],'m',i,C[k][0])});
+const jr=document.getElementById('jr');
+C.galeri.forEach((it,i)=>{const b=document.createElement('button');b.type='button';b.className='gi rev';b.setAttribute('aria-label','Lihat foto: '+it.cap);
+ b.innerHTML=`<span class="gm">${media(it.src,it.cap,'g',i)}</span><span class="gc"><i>${String(i+1).padStart(2,'0')}</i>${it.cap}</span>`;b.onclick=()=>openLb(i,b);jr.append(b)});
+/* Lightbox */
+const lb=document.getElementById('lb'),ls=document.getElementById('lbS');let cur=0,last=null;
+const show=(i,first)=>{const n=C.galeri.length;cur=(i+n)%n;const it=C.galeri[cur],put=()=>{ls.innerHTML=media(it.src,it.cap,'g',cur)};
+ if(first||rmm){put();ls.style.opacity=1}else if(G){gsap.killTweensOf(ls);gsap.to(ls,{opacity:0,duration:.18,onComplete:()=>{put();gsap.to(ls,{opacity:1,duration:.5,ease:'power3.out'})}})}else{ls.style.opacity=0;setTimeout(()=>{put();ls.style.opacity=1},160)}
+ document.getElementById('lbT').textContent=it.cap;document.getElementById('lbN').textContent=String(cur+1).padStart(2,'0')+' / '+String(n).padStart(2,'0')};
+const openLb=(i,from)=>{last=from;show(i,true);lb.classList.add('on');document.body.classList.add('lbo');lb.querySelector('.lb-x').focus();
+ if(G&&!rmm){gsap.killTweensOf([lb,ls]);gsap.fromTo(lb,{opacity:0},{opacity:1,duration:.5,ease:'power2.out'});gsap.fromTo(ls,{clipPath:'inset(7% 7% 7% 7%)',scale:.95,y:22,opacity:0},{clipPath:'inset(0% 0% 0% 0%)',scale:1,y:0,opacity:1,duration:1,ease:'expo.out',clearProps:'clipPath'})}};
+const closeLb=()=>{document.body.classList.remove('lbo');last&&last.focus({preventScroll:true});
+ if(G&&!rmm){gsap.killTweensOf([lb,ls]);gsap.to(ls,{opacity:0,scale:.97,y:12,duration:.35,ease:'power2.in'});gsap.to(lb,{opacity:0,duration:.45,ease:'power2.inOut',onComplete:()=>{lb.classList.remove('on');gsap.set([lb,ls],{clearProps:'opacity,transform'})}})}else lb.classList.remove('on')};
+lb.querySelector('.lb-x').onclick=closeLb;lb.querySelector('.p').onclick=()=>show(cur-1);lb.querySelector('.n').onclick=()=>show(cur+1);
+lb.addEventListener('click',e=>{if(e.target===lb||e.target===ls)closeLb()});
+addEventListener('keydown',e=>{if(!lb.classList.contains('on'))return;if(e.key==='Tab'){const f=[...lb.querySelectorAll('button')],i=f.indexOf(document.activeElement);e.preventDefault();f[(i+(e.shiftKey?-1:1)+f.length)%f.length].focus()}if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1)});
+let sx=0;lb.addEventListener('touchstart',e=>{sx=e.changedTouches[0].clientX},{passive:true});lb.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>50)show(cur+(d<0?1:-1))},{passive:true});
+/* Reveal halus (IntersectionObserver): cadangan bila GSAP tidak tersedia */
+const rv2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');rv2.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.rev').forEach(e=>rv2.observe(e));
+/* Kisah Kami: tahun di rel mengikuti bab yang sedang dibaca */
+{const ry=[...document.querySelectorAll('.rail-y span')],rk=document.getElementById('rk'),RM=['I','II','III','IV'],cs=[...document.querySelectorAll('.ch')];
+ const setY=i=>{ry.forEach((s,j)=>s.classList.toggle('on',j===i));rk.textContent=RM[i]||''};setY(0);
+ const cio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)setY(+e.target.dataset.i)}),{rootMargin:'-40% 0px -50% 0px'});
+ cs.forEach((c,i)=>{c.dataset.i=i;cio.observe(c)})}
+/* Gerak scroll (GSAP ScrollTrigger): hierarki halus, tiap animasi punya tujuan */
+if(G&&!rm){
+ const E='expo.out',P3='power3.out',gen=[...document.querySelectorAll('main .rev')];gen.forEach(e=>e.classList.remove('rev'));
+ const trig=(el,o)=>Object.assign({trigger:el,start:'top 84%',once:true},o);
+ const scrub=(t,o)=>Object.assign({trigger:t,start:'top bottom',end:'bottom top',scrub:true},o);
+ const isI=im=>im&&im.tagName==='IMG';
+ const par=(im,ph,a)=>isI(im)&&gsap.fromTo(im,{yPercent:-(a||6)},{yPercent:a||6,ease:'none',scrollTrigger:scrub(ph)});
+ /* foto dibuka dengan mask sinematik, lalu skala turun perlahan */
+ const unveil=(box,im,dir,tr)=>{gsap.set(box,{clipPath:{down:'inset(0% 0% 100% 0%)',right:'inset(0% 100% 0% 0%)',up:'inset(100% 0% 0% 0%)'}[dir||'down']});isI(im)&&gsap.set(im,{scale:1.3});
+  const t=gsap.timeline({scrollTrigger:tr}).to(box,{clipPath:'inset(0% 0% 0% 0%)',duration:1.5,ease:'expo.inOut'});isI(im)&&t.to(im,{scale:1.12,duration:2.1,ease:P3},0);return t};
+ /* transisi antar bagian: bagian gelap "melebar" hingga penuh layar saat masuk */
+ ['acara','galeri'].forEach(id=>{const s=document.getElementById(id);gsap.fromTo(s,{clipPath:'inset(40px 20px 0px 20px)'},{clipPath:'inset(0px 0px 0px 0px)',ease:'none',scrollTrigger:{trigger:s,start:'top bottom',end:'top 22%',scrub:true}})});
+ /* judul bagian: label naik, kata muncul lewat mask */
+ document.querySelectorAll('.sec-h').forEach(h=>{h.dataset.h=1;const l=h.querySelector('.label'),w=words(h.querySelector('h2')),su=h.querySelector('.sub');
+  gsap.set(l,{opacity:0,y:10});gsap.set(w,{yPercent:115});su&&gsap.set(su,{opacity:0,y:12});
+  const tl=gsap.timeline({scrollTrigger:trig(h)});tl.to(l,{opacity:1,y:0,duration:.7,ease:P3}).to(w,{yPercent:0,duration:1.1,stagger:.09,ease:E},.1);su&&tl.to(su,{opacity:1,y:0,duration:.9,ease:P3},.55)});
+ /* pembuka: salam, garis ayat digambar, lalu ayat */
+ {const sec=document.getElementById('pembuka');sec.dataset.h=1;const q=sec.querySelector('.quote'),it=[sec.querySelector('.label'),sec.querySelector('.lead'),q.querySelector('p'),q.querySelector('cite'),sec.querySelector('.link')];
+  gsap.set(it,{opacity:0,y:20});gsap.set(q,{'--ln':0});
+  gsap.timeline({scrollTrigger:trig(sec,{start:'top 72%'})}).to(it[0],{opacity:1,y:0,duration:.8,ease:P3}).to(it[1],{opacity:1,y:0,duration:1.2,ease:P3},.15).to(q,{'--ln':1,duration:1.4,ease:'power2.inOut'},.7).to(it[2],{opacity:1,y:0,duration:1,ease:P3},.9).to(it[3],{opacity:1,y:0,duration:.8,ease:P3},1.25).to(it[4],{opacity:1,y:0,duration:.8,ease:P3},1.45)}
+ /* mempelai: potret dibuka bergantian; kolom kanan bergerak lebih lambat */
+ document.querySelectorAll('.pc').forEach(c=>{c.dataset.h=1;const ph=c.querySelector('.ph'),im=ph.firstElementChild,pi=[...c.querySelectorAll('.role,h3,.par')];
+  gsap.set(pi,{opacity:0,y:18});
+  unveil(ph,im,'down',trig(c,{start:'top 82%'})).to(pi,{opacity:1,y:0,duration:.9,stagger:.12,ease:P3},.8);par(im,ph)});
+ if(matchMedia('(min-width:860px)').matches)gsap.fromTo('.pc--b',{yPercent:5},{yPercent:-5,ease:'none',scrollTrigger:scrub('.duo')});
+ /* kisah kami */
+ {const sp=document.querySelector('.story-ph');sp.dataset.h=1;unveil(sp,sp.firstElementChild,'right',trig(sp,{start:'top 80%'}));par(sp.firstElementChild,sp)}
+ document.querySelectorAll('.ch-tx').forEach(t=>{t.dataset.h=1;const no=t.querySelector('.ch-no'),w=words(t.querySelector('h3')),ps=[...t.querySelectorAll('p')].filter(x=>x!==no);
+  gsap.set(no,{opacity:0,y:10});gsap.set(w,{yPercent:115});gsap.set(ps,{opacity:0,y:16});
+  gsap.timeline({scrollTrigger:trig(t,{start:'top 86%'})}).to(no,{opacity:1,y:0,duration:.7,ease:P3}).to(w,{yPercent:0,duration:1,stagger:.07,ease:E},.05).to(ps,{opacity:1,y:0,duration:.9,stagger:.12,ease:P3},.3)});
+ /* acara: medali tanggal, hitung mundur, lalu kartu acara naik satu per satu */
+ {const sec=document.getElementById('acara');sec.dataset.h=1;
+  const md=sec.querySelector('.medal'),mh=md.querySelector('.md-h'),dn=words(md.querySelector('.md-n')),mb=md.querySelector('.md-b'),cdn=[...sec.querySelectorAll('#cd>div')];
+  gsap.set(md,{opacity:0,scale:.92});gsap.set(dn,{yPercent:108});gsap.set([mh,mb],{opacity:0,y:14});gsap.set(cdn,{opacity:0,y:22});
+  gsap.timeline({scrollTrigger:trig(md,{start:'top 86%'})}).to(md,{opacity:1,scale:1,duration:1.2,ease:E}).to(dn,{yPercent:0,duration:1.4,ease:E},.2).to([mh,mb],{opacity:1,y:0,duration:.9,stagger:.14,ease:P3},.5);
+  gsap.to(cdn,{opacity:1,y:0,duration:1,stagger:.1,ease:P3,scrollTrigger:trig('#cd',{start:'top 92%'})});
+  sec.querySelectorAll('.evc').forEach(ev=>{const kids=[...ev.querySelectorAll('.evc-ic,.evc-k,.evc-t,.evc-m,.evc-a')];gsap.set(ev,{opacity:0,y:34});gsap.set(kids,{opacity:0,y:12});
+   gsap.timeline({scrollTrigger:trig(ev,{start:'top 90%'})}).to(ev,{opacity:1,y:0,duration:1,ease:P3}).to(kids,{opacity:1,y:0,duration:.8,stagger:.09,ease:P3},.25)})}
+ /* lokasi: peta dibuka dengan mask, kartu informasi naik menimpanya */
+ {const sec=document.getElementById('lokasi');sec.dataset.h=1;const li=sec.querySelector('.loc-i'),vm=sec.querySelector('.vm'),w=words(document.getElementById('vnama')),sd=li.querySelector('.sched'),rows=[...sd.children],
+   it=[li.querySelector('.pin'),li.querySelector('.label'),li.querySelector('.addr'),li.querySelector('.vb')];
+  gsap.set(vm,{clipPath:'inset(0% 100% 0% 0%)'});gsap.set(li,{opacity:0,y:40});gsap.set(it,{opacity:0,y:14});gsap.set(w,{yPercent:115});gsap.set([sd,...rows],{'--ln':0});gsap.set(rows,{opacity:0});
+  gsap.timeline({scrollTrigger:trig(sec.querySelector('.loc'),{start:'top 80%'})}).to(vm,{clipPath:'inset(0% 0% 0% 0%)',duration:1.5,ease:'expo.inOut'})
+   .to(li,{opacity:1,y:0,duration:1.1,ease:P3},.7).to(it[0],{opacity:1,y:0,duration:.7,ease:P3},.9).to(it[1],{opacity:1,y:0,duration:.7,ease:P3},1).to(w,{yPercent:0,duration:1.1,stagger:.09,ease:E},1.05).to(it[2],{opacity:1,y:0,duration:.9,ease:P3},1.3).to(sd,{'--ln':1,duration:1,ease:'power2.inOut'},1.4)
+   .to(rows,{opacity:1,duration:.6,stagger:.12,ease:P3},1.45).to(rows,{'--ln':1,duration:.9,stagger:.12,ease:'power2.inOut'},1.45).to(it[3],{opacity:1,y:0,duration:.8,ease:P3},1.9)}
+ /* galeri: tiap foto dibuka dari atas, keterangan menyusul; paralaks tipis di dalam foto */
+ {const gis=[...document.querySelectorAll('.gi')],gms=gis.map(g=>g.querySelector('.gm')),ims=gms.map(g=>g.firstElementChild),gcs=gis.map(g=>g.querySelector('.gc'));
+  gsap.set(gms,{clipPath:'inset(0% 0% 100% 0%)'});gsap.set(ims.filter(isI),{scale:1.25});gsap.set(gcs,{opacity:0,y:8});
+  ScrollTrigger.batch(gis,{start:'top 92%',once:true,onEnter:b=>{const m=b.map(g=>g.querySelector('.gm')),i=m.map(g=>g.firstElementChild),c=b.map(g=>g.querySelector('.gc'));
+   gsap.to(m,{clipPath:'inset(0% 0% 0% 0%)',duration:1.3,ease:'expo.inOut',stagger:.12});gsap.to(i.filter(isI),{scale:1.1,duration:1.8,ease:P3,stagger:.12});gsap.to(c,{opacity:1,y:0,duration:.8,ease:P3,stagger:.12,delay:.7})}});
+  ims.forEach((im,i)=>par(im,gms[i],5))}
+ /* rsvp: judul, lalu kolom formulir bertahap */
+ {const sec=document.getElementById('rsvp');sec.dataset.h=1;const fl=[...sec.querySelectorAll('#f .fld,#f .btn')];gsap.set(fl,{opacity:0,y:24});gsap.set('#wishes',{opacity:0,y:20});
+  gsap.to(fl,{opacity:1,y:0,duration:.9,stagger:.1,ease:P3,scrollTrigger:trig('#f',{start:'top 84%'})});gsap.to('#wishes',{opacity:1,y:0,duration:.9,ease:P3,scrollTrigger:trig('#wishes',{start:'top 94%'})})}
+ /* penutup (tidak diubah): pelan dan tuntas */
+ {const ft=document.querySelector('footer'),hh=ft.querySelector('.ft-h'),n=chars(ft.querySelector('.ft-n')),d=ft.querySelector('.ft-d'),wm=ft.querySelector('.wm'),bg=ft.querySelector('.ft-bg svg');ft.dataset.h=1;
+  gsap.set(hh,{opacity:0,y:16});gsap.set(n,{yPercent:118});gsap.set([d,wm],{opacity:0,y:12});
+  gsap.timeline({scrollTrigger:trig(ft,{start:'top 55%'})}).to(hh,{opacity:1,y:0,duration:1.1,ease:P3}).to(n,{yPercent:0,duration:1.8,stagger:.12,ease:E},.3).to(d,{opacity:1,y:0,duration:1.1,ease:P3},1.2).to(wm,{opacity:1,y:0,duration:1,ease:P3},1.5);
+  gsap.fromTo(bg,{yPercent:14,scale:1.06},{yPercent:0,scale:1,ease:'none',scrollTrigger:{trigger:ft,start:'top bottom',end:'bottom bottom',scrub:true}});
+  gsap.fromTo(ft,{backgroundColor:'#542B35'},{backgroundColor:'#2A141B',ease:'none',scrollTrigger:{trigger:ft,start:'top 60%',end:'bottom bottom',scrub:true}})}
+ /* sisa .rev yang belum ditangani: naik halus */
+ gen.filter(e=>!e.closest('[data-h]')&&!e.dataset.h).forEach(e=>{gsap.set(e,{opacity:0,y:18});gsap.to(e,{opacity:1,y:0,duration:.9,ease:P3,scrollTrigger:trig(e)})});
+ const rf=()=>ScrollTrigger.refresh();addEventListener('load',rf);document.fonts&&document.fonts.ready.then(rf)}
+/* Kedalaman hero: tiga lapis bergerak dengan kecepatan berbeda (ScrollTrigger) */
+if(G&&!rm){const hs={trigger:'.hero',start:'top top',end:'bottom top',scrub:true};
+ gsap.to('.l-sky',{y:()=>innerHeight*.26,ease:'none',scrollTrigger:hs});
+ gsap.to('.l-city',{y:()=>innerHeight*.14,ease:'none',scrollTrigger:hs});
+ gsap.to('.hero-txt',{y:()=>innerHeight*.12,opacity:0,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'62% top',scrub:true}})}
+else if(!G&&!rm){const txt=document.querySelector('.hero-txt'),HL=[['.l-sky',.12],['.l-city',.07],['.hero-txt',.22]].map(([q,v])=>[document.querySelector(q),v]);let tk=0;
+ const upd=()=>{tk=0;const H=innerHeight,sy=scrollY;if(sy>H*1.4)return;const s=Math.min(sy,H*1.1);
+  HL.forEach(([e,v])=>e.style.transform='translate3d(0,'+(v*s).toFixed(1)+'px,0)');
+  txt.style.opacity=Math.max(0,Math.min(1,1-Math.max(0,s-H*.2)/(H*.55))).toFixed(2)};
+ addEventListener('scroll',()=>{tk||(tk=requestAnimationFrame(upd))},{passive:true});upd()}
+</script>
+</body>
+</html>
